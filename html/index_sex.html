@@ -6,6 +6,7 @@
 	</head>
 	<script src="../js/jquery.1.11.3.min.js"></script>
 	<script src="../js/rem.js"></script>
+	<link href="http://static.h-ui.net/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 		*{
 			padding: 0;
@@ -43,6 +44,10 @@
 			font-size: 0.4rem;
 			float: left;
 		}
+		#province select {
+			margin-left: 10px;
+			width: 100px
+		}
 	</style>
 	<body>
 		<div id="box">
@@ -57,11 +62,16 @@
 					<span>发布</span>
 				</div>
 			</div>
-		</div>
+			<div id="province"></div>
+				
+			</div>
 	</body>
+	<script type="text/javascript" src="http://lib.h-ui.net/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.provincesCity.js"></script>
+	<script type="text/javascript" src="../js/provincesData.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			
+			$("#province").ProvinceCity();
 		})
 	</script>
 </html>
