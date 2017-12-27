@@ -68,10 +68,10 @@
 			width: 0.7rem;
 		}
 		#content{
-			margin-top: 1.5rem;
+			margin-top: 1.4rem;
 		}
 		.swiper-container{
-			height: 4.8rem;
+			height: 5rem;
 			overflow: hidden;
 		}
 		.swiper-slide img{
@@ -103,19 +103,15 @@
 			width: 20%;
 			font-size: 0.3rem;
 			text-align: center;
-			margin: 0 auto;
 			float: left;
 		}
 		.foot_nav img{
 			height: 0.65rem;
 			width: 0.65rem;
 		}
-		#foot_nav_cart{
-			margin-left: 2.1rem;
-		}
 		.foot_nav_jiahao{
 			position: absolute;
-			bottom: -0.1rem;
+			bottom: 0.05rem;
 			width: 20%;
 			text-align: center;
 			float: left;
@@ -176,7 +172,7 @@
 				</div>
 			</div>
 			<div id="foot">
-				<a class="foot_nav">
+				<a class="foot_nav" href="index.html" rel="external">
 					<img src="../images/service_select.png"/>
 					<p>首页</p>
 				</a>
@@ -187,7 +183,7 @@
 				<a class="foot_nav_jiahao">
 					<img src="../images/jiahao.png"/>
 				</a>
-				<a class="foot_nav" id="foot_nav_cart" href="mall.html" rel="external">
+				<a class="foot_nav" href="mall.html" rel="external">
 					<img src="../images/mall_normal.png"/>
 					<p>商城</p>
 				</a>
@@ -203,8 +199,7 @@
 			//选择地点定位
 			$(function(){
 				$('#head_select_input').click(function(){
-					$(this).value = '秦皇岛';
-					console.log($(this).value)
+					$(this).val('秦皇岛');
 				})
 			})
 			//扫一扫按钮点击变化
@@ -223,10 +218,11 @@
 		    		pagination: '.swiper-pagination',
 		    		autoplay:2000
 		  		}) 
-	  	})
+	  		})
 			//底部导航栏点击颜色变化
 	  		$(function(){
 		  		var foot_imgs = document.getElementsByClassName('foot_nav');
+	  			$(foot_imgs[2]).css('margin-left','20%');
 		  		function normal(){
 		  			foot_imgs[0].children[0].src = "../images/service_normal.png";
 		  			foot_imgs[1].children[0].src = "../images/circle_normal.png";
