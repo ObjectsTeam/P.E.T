@@ -24,8 +24,8 @@ a{
 /*header*/
 .header{
 	background-color: #dc6d65;
-	height: 2rem;
-	line-height: 2rem;
+	height: 1.5rem;
+	line-height: 1.5rem;
 }
 /*search*/
 #search{
@@ -40,7 +40,7 @@ a{
 #search_img{
 	width:1rem;
 	position: absolute;
-	top:0.55rem;
+	top:0.2rem;
 	right:1rem;
 }
 /*list*/
@@ -84,4 +84,7 @@ a{
 	height: 1.5rem;
 	width: 1.5rem;
 }
-
+.foot_nav p{
+	font-size: 0.3rem;
+	color:#000;
+}
