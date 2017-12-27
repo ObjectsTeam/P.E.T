@@ -1,0 +1,58 @@
+*{
+	padding:0;
+	margin:0;
+	width:100%;
+	height:auto;
+	font-size: 24px;
+}
+/*轮播*/
+li{
+	list-style: none;
+}
+.swiper-container {
+    width: 100%;
+    height: 6rem;
+    text-align: center;
+    font-size: 2rem;
+}  
+.swiper-slide{
+	line-height: 0.4rem;
+}
+a{
+	text-decoration: none;
+}
+/*header*/
+.header{
+	background-color: #dc6d65;
+	height: 2rem;
+	line-height: 2rem;
+}
+/*search*/
+#search{
+	height: 1rem;
+	width:5rem;
+	background-color: #dc6d65;
+	border-radius:1rem;
+	font-size:16px;
+	text-align: center;
+	margin-left:2.6rem;
+}
+#search_img{
+	width:1rem;
+	position: absolute;
+	top:0.55rem;
+	right:1rem;
+}
+/*list*/
+.list ul{
+	margin-left:0.3rem;
+}
+.list ul li{
+	line-height:1.5rem;
+}
+.list a li{
+	color:black;
+	font-size: 18px;
+}
+
+
