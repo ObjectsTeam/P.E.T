@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title></title>
 	</head>
 	<script src="../js/jquery.1.11.3.min.js"></script>
@@ -45,57 +46,57 @@
 		}
 	</style>
 	<body>
-			<div id="foot">
-				<div class="foot_nav">
-					<img src="../images/service_normal.png"/>
-					<p>首页</p>
-				</div>
-				<div class="foot_nav">
-					<img src="../images/circle_normal.png"/>
-					<p>群聊</p>
-				</div>
-				<div class="foot_nav_jiahao">
-					<img src="../images/jiahao.png"/>
-				</div>
-				<div class="foot_nav">
-					<img src="../images/mall_normal.png"/>
-					<p>商城</p>
-				</div>
-				<div class="foot_nav">
-					<img src="../images/my_normal.png"/>
-					<p>我的</p>
-				</div>
-			</div>
+		<div id="foot">
+			<a class="foot_nav" href="index.html" rel="external">
+				<img src="../images/service_normal.png"/>
+				<p>首页</p>
+			</a>
+			<a class="foot_nav" href="chat.html" rel="external">
+				<img src="../images/circle_normal.png"/>
+				<p>群聊</p>
+			</a>
+			<a class="foot_nav_jiahao">
+				<img src="../images/jiahao.png"/>
+			</a>
+			<a class="foot_nav">
+				<img src="../images/mall_normal.png"/>
+				<p>商城</p>
+			</a>
+			<a class="foot_nav" href="mine.html" rel="external">
+				<img src="../images/my_normal.png"/>
+				<p>我的</p>
+			</a>
+		</div>
 	</body>
 	<script type="text/javascript">
 		$(function(){
-		  		var foot_imgs = document.getElementsByClassName('foot_nav');
-		  		var foot_jiahao = document.getElementsByClassName('foot_nav_jiahao');
-		  		function normal(){
-		  			foot_imgs[0].children[0].src = "../images/service_normal.png";
-		  			foot_imgs[1].children[0].src = "../images/circle_normal.png";
-		  			foot_imgs[2].children[0].src = "../images/mall_normal.png";
-		  			foot_imgs[3].children[0].src = "../images/my_normal.png";
-		  		}
-		  		$('.foot_nav_jiahao>img').click(function(){
-		  			normal();
-		  		})
-		  		foot_imgs[0].onclick = function(){
-		  			normal();
-		  			foot_imgs[0].children[0].src = "../images/service_select.png"
-		  		}
-		  		foot_imgs[1].onclick = function(){
-		  			normal();
-		  			foot_imgs[1].children[0].src = "../images/circle_select.png"
-		  		}
-		  		foot_imgs[2].onclick = function(){
-		  			normal();
-		  			foot_imgs[2].children[0].src = "../images/mall_select.png"
-		  		}
-		  		foot_imgs[3].onclick = function(){
-		  			normal();
-		  			foot_imgs[3].children[0].src = "../images/my_select.png"
-		  		}
-		  	})
+	  		var foot_imgs = document.getElementsByClassName('foot_nav');
+	  		var foot_jiahao = document.getElementsByClassName('foot_nav_jiahao');
+	  		function normal(){
+	  			foot_imgs[0].children[0].src = "../images/service_normal.png";
+	  			foot_imgs[1].children[0].src = "../images/circle_normal.png";
+	  			foot_imgs[2].children[0].src = "../images/mall_normal.png";
+	  			foot_imgs[3].children[0].src = "../images/my_normal.png";
+	  		}
+	  		$('.foot_nav_jiahao>img').click(function(){
+	  			normal();
+	  		})
+	  		foot_imgs[0].onclick = function(){
+	  			normal();
+	  			foot_imgs[0].children[0].src = "../images/service_select.png"
+	  		}
+	  		foot_imgs[1].onclick = function(){
+	  			normal();
+	  			foot_imgs[1].children[0].src = "../images/circle_select.png"
+	  		}
+	  		foot_imgs[2].onclick = function(){
+	  			normal();
+	  			foot_imgs[2].children[0].src = "../images/mall_select.png"
+	  		}
+	  		foot_imgs[3].onclick = function(){
+	  			normal();
+	  			foot_imgs[3].children[0].src = "../images/my_select.png"
+	  		}
+	  	})
 	</script>
 </html>
