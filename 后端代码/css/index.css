@@ -40,6 +40,9 @@ a {
 	height: 20px;
 	width: 20px;
 	margin: 0;
+	position: absolute;
+	left: 15%;
+	top: 135px;
 }
 
 .left_main {
