@@ -41,8 +41,9 @@ a {
 	width: 20px;
 	margin: 0;
 	position: absolute;
-	left: 15%;
+	left: 13%;
 	top: 135px;
+	background-color: red;
 }
 
 .left_main {

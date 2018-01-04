@@ -3,7 +3,9 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>更改管理员信息</title>
+		<script src="../js/jquery.1.11.3.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/public_left.css"/>
+		<script src="../js/public_left.js"></script>
 		<style type="text/css">
 			.right_top{
 				height: 50px;
@@ -80,25 +82,25 @@
 				background-color: red;
 				border-radius: 100px;
 				float: left;
-				margin-top: 4%;
-				margin-left: 12%;
+				margin-top: 50px;
+				margin-left: 150px;
 			}
 			.right_middle_img{
 				float: left;
-				margin-left: 1%;
-				margin-top: 7%;
+				margin-left: 10px;
+				margin-top: 80px;
 				font-weight: bold;
 			}
 			#touxiang_button{
 				float: left;
-				position: absolute;
-				top: 33%;
-				left: 41%;
+				margin-top: 110px;
+				margin-left: -60px;
+				padding: 2px;
 			}
 			.right_middle_span{
 				float: left;
-				margin-left: 1%;
-				margin-top: 11.5%;
+				margin-top: 115px;
+				margin-left: 10px;
 				font-family: "微软雅黑";
 				font-size: 13px;
 			}
@@ -106,7 +108,7 @@
 				float: left;
 				width: 54%;
 				margin-top: 30px;
-				margin-left: 21%;
+				margin-left: 20%;
 			}
 			.right_middle_foot span{
 				margin-top: 20px;
@@ -128,7 +130,7 @@
 			#right_result{
 				float: left;
 				margin-top: 40px;
-				margin-left: 20%;
+				margin-left: 24%;
 				background-color: slateblue;
 				height: 30px;
 				width: 50px;
@@ -203,9 +205,9 @@
 					<input type="text" id="right_middle_foot_usw" placeholder="昵称名称" />
 					<span id="usw"></span><br/>
 					<span>密码：</span>
-					<input type="text" id="right_middle_foot_psw" placeholder="密码" /><br/>
+					<input type="password" id="right_middle_foot_psw" placeholder="密码" /><br/>
 					<span>确认密码：</span>
-					<input type="text" id="right_middle_foot_psw2" placeholder="确认密码" />
+					<input type="password" id="right_middle_foot_psw2" placeholder="确认密码" />
 					<span id="psw"></span><br/>
 					<input type="button" name="right_result" id="right_result" value="确认" />
 				</div>
@@ -213,6 +215,35 @@
 		</div>
 	</body>
 	<script type="text/javascript">
-		
+		$(function(){
+			//存储用户昵称
+			$(function(){
+				$('#right_result').click(function(){
+					var name = $('#right_middle_foot_usw').val();
+					if(name.length !== 0){
+						localStorage.setItem('userName',name);
+					}else{
+						$('#usw').html('请输入正确的昵称')
+						setTimeout(function(){$('#usw').html('')},2500)
+					}
+					if($('#right_middle_foot_psw').val() == $('#right_middle_foot_psw2').val() && $('#right_middle_foot_psw2').val() !== ""){
+						localStorage.setItem('password',$('#right_middle_foot_psw2').val());
+					}else{
+						$('#psw').html('密码不一致')
+						setTimeout(function(){$('#psw').html('')},2500)
+					}
+					//获取localstorage中的昵称
+					$(function(){
+						if(localStorage.getItem('userName') !== null){
+							$('#left_name>p').html(localStorage.getItem('userName'))
+						}else{
+							$('#left_name>p').html('管理员昵称')
+						}
+					})
+					document.location.href = "index.html"
+				})
+			})
+			
+		})
 	</script>
 </html>
