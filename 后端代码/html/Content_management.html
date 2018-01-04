@@ -2,11 +2,69 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<title>内容管理</title>
+		<title>更改管理员信息</title>
 		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
 		<style type="text/css">
-			#index_p{
-				color: dodgerblue;
+			.right_top{
+				height: 50px;
+				float: left;
+				width: 79.7%;
+				border: 1px solid #696969;
+			}
+			.search{
+				height: 50px;
+				width: 6%;
+				float: left;
+				text-align: center;
+			}
+			.search img{
+				height: 25px;
+				margin-top: 15px;
+				background-color: red;
+			}
+			#right_search{
+				height: 50px;
+				width: 82%;
+				float: left;
+				border-top: none;
+				border-bottom: none;
+				border-left: 0.5px solid #696969;
+				border-right: 0.5px solid #696969;
+			}
+			input::-webkit-input-placeholder{
+				text-align: center;
+			} 
+			.right_msg{
+				height: 50px;
+				width: 5.9%;
+				float: left;
+				text-align: center;
+				border-right: 0.5px solid #696969;
+			}
+			.right_tixing{
+				height: 50px;
+				width: 6%;
+				float: left;
+				text-align: center;
+			}
+			.right_msg img,.right_tixing img{
+				margin-top: 15px;
+				margin-left: 2%;
+				height: 25px;
+				background-color: red;
+			}
+			.top_mbx{
+				background-color: lightgray;
+				height: 35px;
+				width: 80%;
+				line-height: 35px;
+				float: left;
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			.top_mbx p{
+				font-family: "微软雅黑";
+				color: #696969;
 			}
 		</style>
 	</head>
@@ -35,7 +93,7 @@
 					</a>
 					<a href="Content_management.html">
 						<img src="../img/me_card.png"/>
-						<p class="main_p2" id="index_p">内容管理</p>
+						<p class="main_p2">内容管理</p>
 					</a>
 					<a href="Message_management.html">
 						<img src="../img/me_sugguest.png" id="p3"/>
@@ -45,6 +103,23 @@
 						<img src="../img/me_update.png"/>
 						<p class="main_p2" id="p4">活动管理</p>
 					</a>
+				</div>
+			</div>
+			<div id="right">
+				<div class="right_top">
+					<div class="search">
+						<img src="../img/search.png"/>
+					</div>
+					<input type="search" placeholder="Search" id="right_search">
+					<div class="right_msg">
+						<img src="../img/service_normal.png"/>
+					</div>
+					<div class="right_tixing">
+						<img src="../img/my_normal.png"/>
+					</div>
+				</div>
+				<div class="top_mbx">
+					<p>后台管理>内容管理</p>
 				</div>
 			</div>
 		</div>
