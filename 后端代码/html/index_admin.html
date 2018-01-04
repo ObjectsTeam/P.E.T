@@ -30,10 +30,8 @@
 				border-bottom: none;
 				border-left: 0.5px solid #696969;
 				border-right: 0.5px solid #696969;
+				padding-left: 10px;
 			}
-			input::-webkit-input-placeholder{
-				text-align: center;
-			} 
 			.right_msg{
 				height: 50px;
 				width: 5.9%;
@@ -72,6 +70,71 @@
 			.top_mbx p{
 				font-family: "微软雅黑";
 				color: #696969;
+			}
+			.right_middle{
+				width: 80%;
+			}
+			.right_middle_touxiang{
+				height: 100px;
+				width: 100px;
+				background-color: red;
+				border-radius: 100px;
+				float: left;
+				margin-top: 4%;
+				margin-left: 12%;
+			}
+			.right_middle_img{
+				float: left;
+				margin-left: 1%;
+				margin-top: 7%;
+				font-weight: bold;
+			}
+			#touxiang_button{
+				float: left;
+				position: absolute;
+				top: 33%;
+				left: 41%;
+			}
+			.right_middle_span{
+				float: left;
+				margin-left: 1%;
+				margin-top: 11.5%;
+				font-family: "微软雅黑";
+				font-size: 13px;
+			}
+			.right_middle_foot{
+				float: left;
+				width: 54%;
+				margin-top: 30px;
+				margin-left: 21%;
+			}
+			.right_middle_foot span{
+				margin-top: 20px;
+			}
+			#right_middle_foot_usw,#right_middle_foot_psw{
+				margin-left: 42px;
+				margin-top: 20px;
+			}
+			#right_middle_foot_psw2{
+				margin-left: 10px;
+				margin-top: 20px;
+			}
+			#usw,#psw{
+				color: red;
+				font-family: "微软雅黑";
+				font-size: 15px;
+				margin-top: 20px;
+			}
+			#right_result{
+				float: left;
+				margin-top: 40px;
+				margin-left: 20%;
+				background-color: slateblue;
+				height: 30px;
+				width: 50px;
+				border:none;
+				box-shadow: inherit;
+				border-radius: 5px;
 			}
 		</style>
 	</head>
@@ -125,9 +188,28 @@
 						<img src="../img/my_normal.png"/>
 					</div>
 				</div>
-				<p class="top_houtai">后台管理</p>
+				<p class="top_houtai">管理员信息修改</p>
 				<div class="top_mbx">
 					<p>后台管理>管理员信息修改</p>
+				</div>
+				<div class="right_middle">
+					<div class="right_middle_touxiang">
+						
+					</div>
+					<span class="right_middle_img">修改头像</span>
+					<button id="touxiang_button">选择文件</button>
+					<span class="right_middle_span">未选择任何文件</span>
+				</div>
+				<div class="right_middle_foot">
+					<span>昵称：</span>
+					<input type="text" id="right_middle_foot_usw" placeholder="昵称名称" />
+					<span id="usw"></span><br/>
+					<span>密码：</span>
+					<input type="text" id="right_middle_foot_psw" placeholder="密码" /><br/>
+					<span>确认密码：</span>
+					<input type="text" id="right_middle_foot_psw2" placeholder="确认密码" />
+					<span id="psw"></span><br/>
+					<input type="button" name="right_result" id="right_result" value="确认" />
 				</div>
 			</div>
 		</div>
