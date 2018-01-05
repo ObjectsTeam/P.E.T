@@ -41,9 +41,8 @@ a {
 	width: 20px;
 	margin: 0;
 	position: absolute;
-	left: 13%;
+	left: 12%;
 	top: 135px;
-	background-color: red;
 }
 
 .left_main {
@@ -62,7 +61,6 @@ a {
 	width: 20px;
 	margin-top: 10px;
 	margin-left: 20px;
-	background-color: red;
 }
 
 #main_p {
@@ -83,7 +81,6 @@ a {
 	width: 20px;
 	margin-top: 10px;
 	margin-left: 20px;
-	background-color: red;
 }
 
 .main_p2 {
@@ -99,4 +96,47 @@ a {
 
 #p4 {
 	margin-bottom: 20px;
+}
+.right_top{
+	height: 50px;
+	float: left;
+	width: 79.7%;
+	border: 1px solid #696969;
+}
+.search{
+	height: 50px;
+	width: 6%;
+	float: left;
+	text-align: center;
+}
+.search img{
+	height: 25px;
+	margin-top: 15px;
+}
+#right_search{
+	height: 50px;
+	width: 82%;
+	float: left;
+	border-top: none;
+	border-bottom: none;
+	border-left: 0.5px solid #696969;
+	border-right: 0.5px solid #696969;
+}
+.right_msg{
+	height: 50px;
+	width: 5.9%;
+	float: left;
+	text-align: center;
+	border-right: 0.5px solid #696969;
+}
+.right_tixing{
+	height: 50px;
+	width: 6%;
+	float: left;
+	text-align: center;
+}
+.right_msg img,.right_tixing img{
+	margin-top: 15px;
+	margin-left: 2%;
+	height: 25px;
 }
