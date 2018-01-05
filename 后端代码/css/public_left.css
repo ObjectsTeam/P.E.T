@@ -21,7 +21,6 @@ html,body{
 .left_img {
 	text-align: center;
 	border-bottom: 2px solid #696969;
-	position: relative;
 }
 
 .left_img img {
@@ -34,6 +33,7 @@ html,body{
 #left_name {
 	margin-top: 10px;
 	margin-bottom: 20px;
+	position: relative;
 }
 
 #left_name p {
@@ -45,8 +45,8 @@ html,body{
 	width: 20px;
 	margin: 0;
 	position: absolute;
-	left: 160px;
-	top: 135px;
+	left: 155px;
+	top: 0px;
 }
 
 .left_main {
