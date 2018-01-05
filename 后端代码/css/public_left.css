@@ -41,9 +41,8 @@ a {
 	width: 20px;
 	margin: 0;
 	position: absolute;
-	left: 13%;
+	left: 12%;
 	top: 135px;
-	background-color: red;
 }
 
 .left_main {
@@ -62,7 +61,6 @@ a {
 	width: 20px;
 	margin-top: 10px;
 	margin-left: 20px;
-	background-color: red;
 }
 
 #main_p {
@@ -83,7 +81,6 @@ a {
 	width: 20px;
 	margin-top: 10px;
 	margin-left: 20px;
-	background-color: red;
 }
 
 .main_p2 {
