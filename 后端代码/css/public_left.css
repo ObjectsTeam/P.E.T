@@ -125,6 +125,7 @@ html,body{
 	border-bottom: none;
 	border-left: 0.5px solid #696969;
 	border-right: 0.5px solid #696969;
+	padding-left: 15px;
 }
 .right_msg{
 	height: 50px;
