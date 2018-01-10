@@ -33,20 +33,18 @@ html,body{
 #left_name {
 	margin-top: 10px;
 	margin-bottom: 20px;
-	position: relative;
 }
 
 #left_name p {
 	color: #fff;
+	display: inline-block;
 }
 
 #name {
 	height: 20px;
 	width: 20px;
 	margin: 0;
-	position: absolute;
-	left: 165px;
-	top: 0px;
+	display: inline-block;
 }
 
 .left_main {
