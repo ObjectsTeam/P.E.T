@@ -209,6 +209,7 @@
 			//存储用户昵称
 			$(function(){
 				$('#right_result').click(function(){
+					//把更改的用户名存在本地
 					var name = $('#right_middle_foot_usw').val();
 					if(name.length !== 0){
 						localStorage.setItem('userName',name);
