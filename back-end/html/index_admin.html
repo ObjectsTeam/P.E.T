@@ -201,33 +201,29 @@
 				$('#touxiang_button').change(function(){
 					var imgFile = document.getElementById('touxiang_button');
 					var path = window.URL.createObjectURL(imgFile.files[0]);
-					console.log(path)
 					document.getElementById('img_touxiang').src = path;
+					localStorage.setItem('img_path',path);
 				})
 				
 			})
 			//存储用户昵称
 			$(function(){
 				$('#right_result').click(function(){
-					//把上传的头像路径保存到本地
-					var imgFile = document.getElementById('touxiang_button');
-					var path = window.URL.createObjectURL(imgFile.files[0]);
-					localStorage.setItem('img_path',path);
-					
 					var name = $('#right_middle_foot_usw').val();
 					if(name.length !== 0){
 						localStorage.setItem('userName',name);
 						$('.result_tankuang').css('display','block')
 						setTimeout(function(){$('.result_tankuang').css('display','none')},2000)
-						setTimeout(function(){document.location.href="index.html"},3000)
-					}else{
-//						$('#usw').html('请输入正确的昵称')
+						setTimeout(function(){document.location.href="../index.html"},3000)
 					}
+					
 					if($('#right_middle_foot_psw').val() == $('#right_middle_foot_psw2').val()){
-						localStorage.setItem('password',$('#right_middle_foot_psw2').val());
+						if($('#right_middle_foot_psw').val() !== ""){
+							localStorage.setItem('password',$('#right_middle_foot_psw2').val());
+						}
 						$('.result_tankuang').css('display','block')
 						setTimeout(function(){$('.result_tankuang').css('display','none')},2000)
-						setTimeout(function(){document.location.href="index.html"},3000)
+						setTimeout(function(){document.location.href="../index.html"},3000)
 					}else{
 						$('#psw').html('密码不一致')
 					}
