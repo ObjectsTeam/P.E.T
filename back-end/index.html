@@ -3,85 +3,39 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>后台主页</title>
-		<script	src="../js/jquery.1.11.3.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="../css/public_left.css"/>
-		<script src="../js/public_left.js"></script>
+		<script	src="js/jquery.1.11.3.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/public_left.css"/>
+		<script src="js/public_left.js"></script>
 		<style type="text/css">
 			#main_p{
 				color: dodgerblue;
 			}
-			.right_top{
-				height: 50px;
-				float: left;
-				width: 79.7%;
-				border: 1px solid #696969;
-			}
-			.search{
-				height: 50px;
-				width: 6%;
-				float: left;
-				text-align: center;
-			}
-			.search img{
-				height: 25px;
-				margin-top: 15px;
-				background-color: red;
-			}
-			#right_search{
-				height: 50px;
-				width: 82%;
-				float: left;
-				border-top: none;
-				border-bottom: none;
-				border-left: 0.5px solid #696969;
-				border-right: 0.5px solid #696969;
-			}
-			input::-webkit-input-placeholder{
-				text-align: center;
-			} 
-			.right_msg{
-				height: 50px;
-				width: 5.9%;
-				float: left;
-				text-align: center;
-				border-right: 0.5px solid #696969;
-			}
-			.right_tixing{
-				height: 50px;
-				width: 6%;
-				float: left;
-				text-align: center;
-			}
-			.right_msg img,.right_tixing img{
-				margin-top: 15px;
-				margin-left: 2%;
-				height: 25px;
-				background-color: red;
-			}
 			.middle_img1{
-				height: 350px;
-				width: 72%;
+				height: 340px;
+				width: 900px;
+				border: 4px solid #696969;
 				float: left;
-				margin-left: 2%;
-				margin-top: 1.5%;
+				margin-left: 25px;
+				margin-top: 20px;
 				overflow: hidden;
 				float: left;
 			}
 			.middle_img1 img{
 				width: 100%;
+				margin-top: 40px;
 			}
 			.middle_img2{
 				height: 300px;
-				width: 35%;
-				margin-left: 2%;
-				margin-top: 1.5%;
+				width: 450px;
+				margin-left: 25px;
+				margin-top: 20px;
 				float: left;
 			}
 			.middle_img3{
-				height: 300px;
-				width: 35%;
+				height: 300px; 
+				width: 450px;
 				margin-left: 2%;
-				margin-top: 1.5%;
+				margin-top: 20px;
 				float: left;
 			}
 			.m1{
@@ -151,12 +105,13 @@
 				text-align: center;
 				line-height: 30px;
 				font-size: 15px;
+				font-weight: bold;
 			}
 			#middle_img2_mbx{
-				height: 50px;
-				width: 40px;
+				height: 20px;
+				width: 50px;
 				float: right;
-				margin-top: 10px;
+				margin-top: 15px;
 			}
 			#middle_mbx{
 				height: 2px;
@@ -167,15 +122,17 @@
 			.m5_img{
 				height: 45px;
 				width: 45px;
-				background-color: red;
 				margin-top: 20px;
 				margin-left: 40px;
 				float: left;
 			}
+			.m5_img img{
+				height: 100%;
+				width: 100%;
+			}
 			.m5_span{
 				height: 50px;
 				width:  100px;
-				/*background-color: red;*/
 				float: left;
 				margin-top: 20px;
 				position: absolute;
@@ -188,35 +145,35 @@
 		<div id="box">
 			<div id="left">
 				<div class="left_img">
-					<img src="../img/haozi.jpg"/>
+					<img src="img/chushi_img.jpg"/>
 					<div id="left_name">
 						<p>管理员昵称</p>
-						<a href="index_admin.html"><img src="../img/me_daywrite.png" id="name"/></a>
+						<a href="html/index_admin.html"><img src="img/write.png" id="name"/></a>
 					</div>
 				</div>
 				<div class="left_main">
 					<p id="main">Main</p>
 					<a href="index.html">
-						<img src="../img/service_normal.png"/>
+						<img src="img/home_fill_light.png"/>
 						<p id="main_p">首页</p>
 					</a>
 				</div>
 				<div class="left_admin">
 					<p id="main">Admin</p>
-					<a href="User_management.html">
-						<img src="../img/my_normal.png"/>
+					<a href="html/User_management.html">
+						<img src="img/my_normal.png"/>
 						<p class="main_p2">用户管理</p>
 					</a>
-					<a href="Content_management.html">
-						<img src="../img/me_card.png"/>
+					<a href="html/Content_management.html">
+						<img src="img/me_sugguest.png"/>
 						<p class="main_p2">内容管理</p>
 					</a>
-					<a href="Message_management.html">
-						<img src="../img/me_sugguest.png" id="p3"/>
+					<a href="html/Message_management.html">
+						<img src="img/community_light.png" id="p3"/>
 						<p class="main_p2" id="p3">消息管理</p>
 					</a>
-					<a >
-						<img src="../img/me_update.png"/>
+					<a href="html/Activity_management.html">
+						<img src="img/me_update.png"/>
 						<p class="main_p2" id="p4">活动管理</p>
 					</a>
 				</div>
@@ -224,62 +181,62 @@
 			<div id="right">
 				<div class="right_top">
 					<div class="search">
-						<img src="../img/search.png"/>
+						<img src="img/search.png"/>
 					</div>
 					<input type="search" placeholder="Search" id="right_search">
 					<div class="right_msg">
-						<img src="../img/service_normal.png"/>
+						<a href=""><img src="img/mail.png"/></a>
 					</div>
 					<div class="right_tixing">
-						<img src="../img/my_normal.png"/>
+						<a href="#"><img src="img/notice_fill.png"/></a>
 					</div>
 				</div>
 				<div class="right_middle">
 					<div class="middle_img1">
-						<a href=""><img src="../img/school.gif"/></a>
+						<a href=""><img src="img/dogs.jpg"/></a>
 					</div>
 					<div class="middle_img2">
-						<div class="m1">
-							<a href="User_management.html" rel="external" id="middle_img2_mbx">
+						<a href="html/User_management.html" rel="external" class="m1">
+							<div id="middle_img2_mbx">
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
+							</div>
 							<p>用户管理</p>
-							</a>
-						</div>
-						<div class="m2">
-							<a href="Content_management.html" rel="external" id="middle_img2_mbx">
+						</a>
+						<a href="html/Content_management.html" rel="external" class="m2">
+							<div id="middle_img2_mbx">
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
+							</div>
 							<p>内容管理</p>
-							</a>
-						</div>
-						<div class="m3">
-							<a href="Message_management.html" rel="external" id="middle_img2_mbx">
+						</a>
+						<a href="html/Message_management.html" rel="external" class="m3">
+							<div id="middle_img2_mbx">
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
+							</div>
 							<p>消息管理</p>
-							</a>
-						</div>
-						<div class="m4">
-							<a href="Activity_management.html" rel="external" id="middle_img2_mbx">
+						</a>
+						<a href="html/Activity_management.html" rel="external" class="m4">
+							<div id="middle_img2_mbx">
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
 								<div id="middle_mbx"></div>
+							</div>
 							<p>活动管理</p>
-							</a>
-						</div>
+						</a>
 					</div>
 					<div class="middle_img3">
 						<div class="m5">
 							<div class="m5_img">
-								
+								<img src="img/mail.png"/>
 							</div>
 							<div class="m5_span">
 								<span id="m5_span">1234</span>
@@ -287,20 +244,20 @@
 								<p>邮件</p>
 							</div>
 							<div class="m5_footer">
-								<a>查看更多</a>
+								<a href="#">查看更多</a>
 							</div>
 						</div>
 						<div class="m6">
 							<div class="m5_img">
-								
+								<img src="img/notice_fill.png"/>
 							</div>
 							<div class="m5_span">
 								<span id="m6_span">123</span>
 								<span>条</span>
-								<p>邮件</p>
+								<p>消息</p>
 							</div>
 							<div class="m5_footer">
-								<a>查看更多</a>
+								<a href="#">查看更多</a>
 							</div>
 						</div>
 					</div>
@@ -353,6 +310,16 @@
 						$(this).css('font-size','15px')
 					}
 				})
+			})
+			//获取上传头像
+			$(function(){
+				var path = localStorage.getItem('img_path');
+				var img = $('.left_img>img')[0];
+				if(path !== null){
+					img.src = path;
+				}else{
+					img.src = "img/chushi_img.jpg";
+				}
 			})
 		})
 		

@@ -7,4 +7,14 @@ $(function(){
 			$('#left_name>p').html('管理员昵称')
 		}
 	})
+	//获取上传头像
+	$(function(){
+		var path = localStorage.getItem('img_path');
+		var img = $('.left_img>img')[0];
+		if(path !== null){
+			img.src = path;
+		}else{
+			img.src = "../img/chushi_img.jpg";
+		}
+	})
 })

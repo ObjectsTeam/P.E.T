@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />		
-		<title>宠物领养</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>宠物相亲</title>
 	</head>
 	<script src="../js/jquery.1.11.3.min.js"></script>
 	<script src="../js/rem.js"></script>
@@ -28,7 +28,7 @@
 			width: 20%;
 			line-height: 1.4rem;
 			text-align: center;
-			font-size: 0.4rem;
+			font-size: 0.5rem;
 			float: left;
 		}
 		.head_name{
@@ -42,8 +42,15 @@
 			width: 20%;
 			line-height: 1.4rem;
 			text-align: center;
-			font-size: 0.4rem;
+			font-size: 0.5rem;
 			float: left;
+		}
+		#province select {
+			margin-top: 1.5rem;
+			margin-left: 1%;
+			width: 32%;
+			float: left;
+			font-size: 0.4rem;
 		}
 		#foot{
 			width: 100%;
@@ -59,26 +66,29 @@
 		<div id="box">
 			<div id="head">
 				<div class="head_nav">
-					<a href="index.html" rel="external">返回</a>
+					<a href="../index.html" rel="external">返回</a>
 				</div>
 				<div class="head_name">
-					<span>宠物领养</span>
+					<span>宠物相亲</span>
 				</div>
 				<div class="head_fabu">
 					<span>发布</span>
 				</div>
 			</div>
 			<div id="content">
-				
+				<div id="province"></div>
+					
+				</div>
 			</div>
 			<div id="foot">
 				
 			</div>
-		</div>
 	</body>
+	<script type="text/javascript" src="../js/jquery.provincesCity.js"></script>
+	<script type="text/javascript" src="../js/provincesData.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			
+			$("#province").ProvinceCity();
 		})
 	</script>
 </html>
