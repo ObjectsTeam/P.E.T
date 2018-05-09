@@ -1,0 +1,60 @@
+page-home {
+    .locate{
+        position: relative;
+        left: -34%;
+    }
+    .scanner{
+        position: relative;
+        left: 35%;
+    }
+    ion-navbar{
+        height: 50px;
+     
+    }
+    .slide1{
+        height: 30%;
+        width: 100%;
+        padding: 0
+    }
+    ion-row ion-col{
+        text-align: center
+    }
+    ion-row ion-col img{
+        width: 55px;
+    }
+    ion-row ion-col p{
+        position: relative;
+        top: -8%
+    }
+    .home-content{
+        background-color: #f0edec
+    }
+    .home-grid{
+        background-color: white
+    }
+    .home-list1{
+     top: 10px;
+     height: 20px;
+    }
+    .home-list1 span{
+        position: relative;
+        left: 20px;
+        top: -15px;
+    }
+    .home-list2{
+        top: 21px;
+        height: 20px;
+    }
+    .home-list2 span{
+        position: relative;
+        left: 20px;
+        top: -15px
+    }
+    .list-div{
+        height: 25px;
+        position: relative;
+        top: 8px;
+        width: 10px;
+        background-color: red
+    }
+}

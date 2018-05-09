@@ -1,0 +1,25 @@
+page-mine {
+    .div1{
+        background:linear-gradient(to top right, #e7767e, #f7d5da, #e9748f) ;
+        height: 135px;
+    }
+    .foot{
+        border-radius:50%;
+        height: 50px;
+        width: 50px;
+        background-color: red;
+        overflow: hidden;
+        position: relative;
+        left: 155px;
+        top: 26px
+    } 
+    .span1{
+        position: relative;
+        top: 43px;
+        left: 168px;
+        color: white
+    }
+    .content{
+        background-color: #f0edec
+    }
+}
