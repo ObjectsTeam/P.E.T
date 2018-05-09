@@ -6,6 +6,7 @@ import { HomePage } from '../home/home';
 import { SearchpetPage } from '../searchpet/searchpet';
 import { JingyanjiaoliuPage } from '../jingyanjiaoliu/jingyanjiaoliu';
 import { MinePage } from '../mine/mine';
+import { MallPage } from '../mall/mall';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -13,8 +14,8 @@ import { MinePage } from '../mine/mine';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = HomePage;
-  tab3Root = ContactPage;
+  tab2Root = ContactPage;
+  tab3Root = MallPage;
   tab4Root =MinePage ;
   constructor() {
 

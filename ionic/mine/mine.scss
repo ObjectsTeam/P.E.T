@@ -22,4 +22,27 @@ page-mine {
     .content{
         background-color: #f0edec
     }
+    .item2{
+        position: relative;
+        top: 10px
+    }
+    .item3{
+        position: relative;
+        top: 22px
+    }
+    .item2 span{
+        position: relative;
+        top: -5px;
+        left: 5px;
+    }
+    .item3 span{
+        position: relative;
+        top: -5px;
+        left: 5px;
+    }
+    .item1 span{
+        position: relative;
+        top: -5px;
+        left: 5px;
+    }
 }
