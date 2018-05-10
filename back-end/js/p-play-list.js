@@ -15,9 +15,9 @@ var $playListPanel = (function() {
     	$('#table').append(''
     	+'<tr>'
     	+'<td>'+m.id+'</td>'
-    	+'<td>'+m.fenlei+'</td>'
-    	+'<td>'+m.number+'</td>'
-    	+'<td>'+m.error+'</td>'
+    	+'<td>'+m.class+'</td>'
+    	+'<td>'+m.peoplenum+'</td>'
+    	+'<td>'+m.sensitive+'</td>'
     	+'<td><button>删除</button></td>'
     	+'</tr>')
     });

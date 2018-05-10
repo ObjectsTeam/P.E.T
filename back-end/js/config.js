@@ -107,27 +107,10 @@ app.userDate = [
 app.activeDate = [
 	{
 		'id':'1',
-		'fenlei':'宠物趣事',
-		'number':'100',
-		'error':'0'
+		'class':'宠物趣事',
+		'peoplenum':'100',
+		'sensitive':'0'
 	},
-	{
-		'id':'2',
-		'fenlei':'宠物趣事',
-		'number':'100',
-		'error':'0'
-	},
-	{
-		'id':'3',
-		'fenlei':'宠物趣事',
-		'number':'100',
-		'error':'0'
-	},
-	{
-		'id':'4',
-		'fenlei':'宠物趣事',
-		'number':'100',
-		'error':'0'
-	}
+	
 ];
 app.isLogin = false;
