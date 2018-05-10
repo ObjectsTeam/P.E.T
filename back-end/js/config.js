@@ -70,47 +70,4 @@ app.menuDate = [
 		]
 	}
 ];
-app.userDate = [
-	{
-		'userid':'123',
-		'usersex':'男',
-		'username':'PET',
-		'species':'柯基犬',
-		'years':'1',
-		'sex':'雄性'
-	},
-	{
-		'userid':'123',
-		'usersex':'男',
-		'username':'PET',
-		'species':'柯基犬',
-		'years':'2',
-		'sex':'雄性'
-	},
-	{
-		'userid':'123',
-		'usersex':'男',
-		'username':'PET',
-		'species':'柯基犬',
-		'years':'3',
-		'sex':'雄性'
-	},
-	{
-		'userid':'123',
-		'usersex':'男',
-		'username':'PET',
-		'species':'柯基犬',
-		'years':'4',
-		'sex':'雄性'
-	}
-];
-app.activeDate = [
-	{
-		'id':'1',
-		'class':'宠物趣事',
-		'peoplenum':'100',
-		'sensitive':'0'
-	},
-	
-];
 app.isLogin = false;

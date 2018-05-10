@@ -66,27 +66,37 @@ var $menu = (function(){
 			}
 			$lastmenuBar = $menu;
 		})
+		
+		function getPanel(router) {
+		    var panel = router.replace(/-(.)/g, function(letter){
+		      return letter;
+		    }).replace(/#\//,'').replace(/-/g,'');
+		
+		    return panel;
+		};
+		//侧边栏点击事件
 		$menuItem.click(function(e){
-			//创建http服务获取sql数据
+			var $menuItem = $(e.currentTarget).find('p').attr('data-href');
+			var panel = getPanel($menuItem);
+//			console.log(panel);
+			//创建http服务
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function () {
-			    //console.log(xhr.readyState,xhr.status);
+//			    console.log(xhr.readyState,xhr.status);
 			    if (xhr.readyState == 4) {
 			        //表示服务器的相应代码是200；正确返回了数据
-			        if (xhr.status == 200) {
+			        if(xhr.status == 200){
 			            var message = xhr.responseText;
-			            var result = JSON.parse(message)
-			            app.activeDate = result;
-			            console.log(typeof result[1].class);
+			            var result = JSON.parse(message);
+			            app[panel] = result;
+			            //stage局部刷新
+			            location.hash = $menuItem;
 			        }
 			    }
 			};
-			xhr.open("get", "http://127.0.0.1:8080", true);
-			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//post需增加
-			xhr.send();
-			//获取数据完毕
-			var $menuItem = $(e.currentTarget);
-			location.hash = $menuItem.find('p').attr('data-href');
+			xhr.open("post","http://127.0.0.1:8080?"+panel,true);//使用POST方法
+	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
+	        xhr.send();
 		})
 	}
 	
