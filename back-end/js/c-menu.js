@@ -79,6 +79,8 @@ var $menu = (function(){
 			var $menuItem = $(e.currentTarget).find('p').attr('data-href');
 			var panel = getPanel($menuItem);
 //			console.log(panel);
+			//stage局部刷新
+			location.hash = $menuItem;
 			//创建http服务
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function () {
@@ -89,8 +91,7 @@ var $menu = (function(){
 			            var message = xhr.responseText;
 			            var result = JSON.parse(message);
 			            app[panel] = result;
-			            //stage局部刷新
-			            location.hash = $menuItem;
+			            console.log(app[panel]);
 			        }
 			    }
 			};

@@ -5,6 +5,8 @@ var data = 'peoplelist';
 var result;
 //创建http服务
 http.createServer(function(req,res){
+	data = req.url.slice(2);
+	console.log(data);
 	//创建sql服务
 	var connection = mysql.createConnection({     
 	  host     : 'localhost',       
@@ -21,35 +23,30 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	connection.query('SELECT * FROM '+data,function (err, resul) {
+	connection.query('SELECT * FROM '+data,function (err, result) {
 	        if(err){
 	          console.log('[SELECT ERROR] - ',err.message);
 	        }else{
 	      	console.log('--------------------------select----------------------------');
 	      	console.log(result);
 	      	console.log('------------------------------------------------------------\n\n');  
-	      	result = resul;
+			req.on("data",function (dat) {
+	//			data = dat;
+	//			console.log(data);
+			});
+			req.on("end",function () {
+		        res.writeHead(200, {
+		            "Content-Type": "text/plain",
+		            // res.writeHead(200, {"Content-Type": "application/json",
+		            "Access-Control-Allow-Origin":"*",
+		            "Access-Control-Allow-Methods": "GET, POST"
+		        });
+	    		res.end(JSON.stringify(result));
+			});
 	        }
 	});
 	connection.end(function(){
 //		console.log("数据库读取完毕！");
 	});
-		data = req.url.slice(2);
-		console.log(data);
-		req.on("data",function (dat) {
-//			data = dat;
-//			console.log(data);
-		});
-		req.on("end",function () {
-        res.writeHead(200, {
-            "Content-Type": "text/plain",
-            // res.writeHead(200, {"Content-Type": "application/json",
-            "Access-Control-Allow-Origin":"*",
-            "Access-Control-Allow-Methods": "GET, POST"
-        });
-        setTimeout(function () {
-    		res.end(JSON.stringify(result));
-        },200*Math.random());
-		});
 }).listen(8080,"127.0.0.1");
 console.log('start serve!')
