@@ -36,10 +36,11 @@ var $signUp = (function(){
 			e.preventDefault();
 			//合法性校验
 			if(validate()){
-				var user = {
+				var user = JSON.stringify({
 					username:$('#username').val(),
 					passworld:$('#psw').val()
-				};
+				});
+				console.log(user);
 				//创建http服务
 				var xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function () {
@@ -51,7 +52,7 @@ var $signUp = (function(){
 				        }
 				    }
 				};
-				xhr.open("post","http://127.0.0.1:8080?"+user,true);//使用POST方法
+				xhr.open("post","http://127.0.0.1:8080?"+$('#username').val()+-+$('#psw').val(),true);//使用POST方法
 		        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 		        xhr.send();
 			}
