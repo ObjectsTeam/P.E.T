@@ -17,7 +17,7 @@ var $playListPanel = (function() {
     	+'<td>'+m.id+'</td>'
     	+'<td>'+m.class+'</td>'
     	+'<td>'+m.peoplenum+'</td>'
-    	+'<td>'+m.sensitive+'</td>'
+    	+'<td style="color:red;">'+m.sensitive+'</td>'
     	+'<td><button>删除</button></td>'
     	+'</tr>')
     });

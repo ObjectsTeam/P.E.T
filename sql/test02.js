@@ -46,7 +46,7 @@ http.createServer(function(req,res){
 	        }
 	});
 	connection.end(function(){
-//		console.log("数据库读取完毕！");
+		
 	});
 }).listen(8080,"127.0.0.1");
 console.log('start serve!')

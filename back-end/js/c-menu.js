@@ -78,9 +78,7 @@ var $menu = (function(){
 		$menuItem.click(function(e){
 			var $menuItem = $(e.currentTarget).find('p').attr('data-href');
 			var panel = getPanel($menuItem);
-//			console.log(panel);
-			//stage局部刷新
-			location.hash = $menuItem;
+			console.log(panel);
 			//创建http服务
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function () {
@@ -91,11 +89,13 @@ var $menu = (function(){
 			            var message = xhr.responseText;
 			            var result = JSON.parse(message);
 			            app[panel] = result;
-			            console.log(app[panel]);
+//			            console.l/og(app[panel]);
+			            //stage局部刷新
+			            location.hash = $menuItem;
 			        }
 			    }
 			};
-			xhr.open("post","http://127.0.0.1:8080?"+panel,true);//使用POST方法
+			xhr.open("get","http://127.0.0.1:8080?"+panel,true);//使用POST方法
 	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 	        xhr.send();
 		})
@@ -103,52 +103,3 @@ var $menu = (function(){
 	
 	return {show:show};
 })();
-
-//	var $menuDOM=''
-//		+'<ul>'
-//			+'<li>'
-//				+'<div class="menu-bar">'
-//					+'<i class="iconfont icon-mendianguanli1"></i>'
-//					+'<span>门店管理</span>'
-//					+'<i class="iconfont icon-arrowdown-copy"></i>'
-//				+'</div>'
-//				+'<div class="menu-items">'
-//					+'<div class="item">'
-//						+'<p data-href = "#/store-list">门店列表</p>'
-//					+'</div>'
-//				+'</div>'
-//			+'</li>'
-//			+'<li>'
-//				+'<div class="menu-bar">'
-//					+'<i class="iconfont icon-huodong"></i>'
-//					+'<span>活动管理</span>'
-//					+'<i class="iconfont icon-arrowdown-copy"></i>'
-//				+'</div>'
-//				+'<div class="menu-items">'
-//					+'<div class="item">'
-//						+'<p>首次关注送券</p>'
-//					+'</div>'
-//					+'<div class="item">'
-//					+'	<p>微信商品券</p>'
-//					+'</div>'
-//					+'<div class="item">'
-//					+'	<p>微信立减券</p>'
-//					+'</div>'
-//					+'<div class="item">'
-//					+'	<p>微信折扣券</p>'
-//					+'</div>'
-//				+'</div>'
-//			+'</li>'
-//			+'<li>'
-//				+'<div class="menu-bar">'
-//					+'<i class="iconfont icon-mimaguanli"></i>'
-//					+'<span>密码管理</span>'
-//					+'<i class="iconfont icon-arrowdown-copy"></i>'
-//				+'</div>'
-//				+'<div class="menu-items">'
-//					+'<div class="item">'
-//					+'	<p>修改密码</p>'
-//					+'</div>'
-//				+'</div>'
-//			+'</li>'
-//		+'</ul>';

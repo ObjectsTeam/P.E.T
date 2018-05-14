@@ -16,10 +16,9 @@ connection.connect(function(err){
 	}
 });
  
-var sql = 'SELECT * FROM Active_List';
+//增
 var addVip = 'insert into Active_List(id,class) values(?,?)';
 var param = [100,'100元秒杀家教机'];
-//增
 //connection.query(addVip, param,function (err, result) {
 //      if(err){
 //        console.log('[INSERT ERROR] - ',err.message);
@@ -31,7 +30,35 @@ var param = [100,'100元秒杀家教机'];
 //      }
 // 
 //});
+
+//删
+//var addVip = 'delete from seckill where seckill_id = 1005';
+//connection.query(addVip, function(error, result){
+//  if(error)
+//  {
+//      console.log(error.message);
+//  }else{
+//      console.log('affectedRows: '+result.affectedRows);
+//  }
+//});
+//
+//connection.end();
+
+//改
+//var userSql = "update seckill set number = number-1 where seckill_id = ?";
+//var param = [1000, 2];
+//connection.query(userSql, param, function (error, result) {
+//  if(error)
+//  {
+//      console.log(error.message);
+//  }else{
+//      console.log('affectedRows: '+result.affectedRows);
+//  }
+//});
+//connection.end();
+
 //查
+var sql = 'SELECT * FROM Active_List';
 connection.query(sql,function (err, result) {
         if(err){
           console.log('[SELECT ERROR] - ',err.message);
