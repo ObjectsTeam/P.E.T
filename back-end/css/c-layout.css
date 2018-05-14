@@ -23,6 +23,9 @@ html,body{
 	font-size: 14px;
 	border: 1px solid #c2c2c2;
 }
+.login i{
+	color: red;
+}
 .login h1{
 	font-size: 26px;
 	font-weight: 400;
@@ -36,7 +39,7 @@ html,body{
 	padding-left: 10px;
 	outline: none;
 }
-input[type="submit"]{
+input[type="submit"],input[type="button"]{
 	margin-bottom: 32px;
 	height: 38px;
 	width: 100px;
@@ -45,7 +48,7 @@ input[type="submit"]{
     color: #fff;
     font-size: 14px;
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
 }
 
 /*Header*/

@@ -18,7 +18,7 @@ var $playList2Panel = (function() {
     	+'<td>'+m.name+'</td>'
     	+'<td>'+m.Totalnum+'</td>'
     	+'<td>'+m.Remnum+'</td>'
-    	+'<td>'+m.text+'</td>'
+    	+'<td style="text-align:left;">'+m.text+'</td>'
     	+'<td><button>删除</button></td>'
     	+'</tr>')
     });

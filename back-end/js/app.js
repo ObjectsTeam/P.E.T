@@ -13,6 +13,8 @@ $(function(){
 		}else if(location.hash === '#/login'){
 			$login.show();
 			app.isLogin = false;
+		}else if(location.hash === '#/signUp'){
+			$signUp.show();
 		}else {
 	    	$stage.load(location.hash);
 	    }

@@ -4,15 +4,16 @@ var $login = (function(){
 			+'<h1>管理后台登录</h1>'
 			+'<form>'
 				+'<label>用户名　</label>'
-				+'<input type="text" />'
+				+'<input type="text" id="username"/>'
 				+'<br />'
 				+'<label>密　码　</label>'
-				+'<input type="text" />'
+				+'<input type="password" id="psw"/>'
 				+'<br />'
-				+'<label>验证码　</label>'
-				+'<input type="text" id="inp-yzm"/>'
-				+'<br />'
+//				+'<label>验证码　</label>'
+//				+'<input type="text" id="inp-yzm"/>'
+//				+'<br />'
 				+'<input type="submit" value="登 录"/>'
+				+'<input type="button" value="注 册" id="btn"/>'
 			+'</form>'
 		+'</div>';
 	function show(config){
@@ -21,7 +22,9 @@ var $login = (function(){
 		
 		var $form = $('form');
 		function validate(){
-			return true;
+//			if(){
+				return true;
+//			}
 		}
 		$form.submit(function(e){
 			e.preventDefault();
@@ -30,6 +33,9 @@ var $login = (function(){
 				location.hash = '#/index';
 				app.isLogin = true;
 			}
+		});
+		$('#btn').click(function(){
+			location.hash = '#/signUp';
 		})
 	}
 	return {show:show}

@@ -23,10 +23,11 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
+	//查询表
 	connection.query('SELECT * FROM '+data,function (err, result) {
-	        if(err){
-	          console.log('[SELECT ERROR] - ',err.message);
-	        }else{
+        if(err){
+          console.log('[SELECT ERROR] - ',err.message);
+        }else{
 	      	console.log('--------------------------select----------------------------');
 	      	console.log(result);
 	      	console.log('------------------------------------------------------------\n\n');  
@@ -43,7 +44,21 @@ http.createServer(function(req,res){
 		        });
 	    		res.end(JSON.stringify(result));
 			});
-	        }
+        }
+	});
+	//添加数据
+	var addVip = 'insert into userlist(username,passworld) values(?,?)';
+	var param = [100,'100元秒杀家教机'];
+	connection.query(addVip, param,function (err, result) {
+	      if(err){
+	        console.log('[INSERT ERROR] - ',err.message);
+	      }else{
+	      	console.log('--------------------------insert----------------------------');
+	      	console.log('insert id: '+result.insertId);
+				console.log(result);
+	      	console.log('------------------------------------------------------------\n\n');  
+	      }
+	 
 	});
 	connection.end(function(){
 		
