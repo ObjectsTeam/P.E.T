@@ -2,7 +2,7 @@ var $login = (function(){
 	var $loginDOM = ''
 		+'<div class="login">'
 			+'<h1>管理后台登录</h1>'
-			+'<form>'
+			+'<form id="login">'
 				+'<label>用户名　</label>'
 				+'<input type="text" id="username"/><i style="color:black" id="user"> *</i>'
 				+'<br />'
@@ -20,9 +20,9 @@ var $login = (function(){
 		$(app.config.appContainer).html('');
 		$(app.config.appContainer).html($loginDOM);
 		
-		var $form = $('form');
+		var $login = $('#login');
 		
-		$form.submit(function(e){
+		$login.submit(function(e){
 			//创建http服务
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function () {

@@ -32,19 +32,13 @@ http.createServer(function(req,res){
 	      	console.log('insert id: '+result.insertId);
 				console.log(result);
 	      	console.log('------------------------------------------------------------\n\n');  
-	      	req.on("data",function (dat) {
-				console.log(data);
-				console.log(req.url);
-			});
-			req.on("end",function () {
-		        res.writeHead(200, {
-		            "Content-Type": "text/plain",
-		            // res.writeHead(200, {"Content-Type": "application/json",
-		            "Access-Control-Allow-Origin":"*",
-		            "Access-Control-Allow-Methods": "GET, POST"
-		        });
-	    		res.end();
-			});
+	        res.writeHead(200, {
+	            "Content-Type": "text/plain",
+	            // res.writeHead(200, {"Content-Type": "application/json",
+	            "Access-Control-Allow-Origin":"*",
+	            "Access-Control-Allow-Methods": "GET, POST"
+	        });
+    		res.end();
 	      }
 	 
 	});
@@ -79,15 +73,13 @@ http.createServer(function(req,res){
 	    console.log('[DELETE ERROR] - ',error.message);
 	  }else{
 	    console.log('result: '+result);
-	    req.on("end",function () {
-	        res.writeHead(200, {
-	            "Content-Type": "text/plain",
-	            // res.writeHead(200, {"Content-Type": "application/json",
-	            "Access-Control-Allow-Origin":"*",
-	            "Access-Control-Allow-Methods": "GET, POST"
-	        });
-    		res.end("修改成功");
-		});
+        res.writeHead(200, {
+            "Content-Type": "text/plain",
+            // res.writeHead(200, {"Content-Type": "application/json",
+            "Access-Control-Allow-Origin":"*",
+            "Access-Control-Allow-Methods": "GET, POST"
+        });
+		res.end("修改成功");
 	  }
 	});
 	connection.end(function(){
@@ -122,15 +114,13 @@ http.createServer(function(req,res){
 	      console.log(error.message);
 	  }else{
 	    console.log('result: '+result);
-	    req.on("end",function () {
-	        res.writeHead(200, {
-	            "Content-Type": "text/plain",
-	            // res.writeHead(200, {"Content-Type": "application/json",
-	            "Access-Control-Allow-Origin":"*",
-	            "Access-Control-Allow-Methods": "GET, POST"
-	        });
-    		res.end("修改成功");
-		});
+        res.writeHead(200, {
+            "Content-Type": "text/plain",
+            // res.writeHead(200, {"Content-Type": "application/json",
+            "Access-Control-Allow-Origin":"*",
+            "Access-Control-Allow-Methods": "GET, POST"
+        });
+		res.end("修改成功");
 	  }
 	});
 	connection.end(function(){
@@ -165,17 +155,13 @@ http.createServer(function(req,res){
 	      	console.log('--------------------------select----------------------------');
 	      	console.log(result);
 	      	console.log('------------------------------------------------------------\n\n');  
-			req.on("data",function (dat) {
-			});
-			req.on("end",function () {
-		        res.writeHead(200, {
-		            "Content-Type": "text/plain",
-		            // res.writeHead(200, {"Content-Type": "application/json",
-		            "Access-Control-Allow-Origin":"*",
-		            "Access-Control-Allow-Methods": "GET, POST"
-		        });
-	    		res.end(JSON.stringify(result));
-			});
+	        res.writeHead(200, {
+	            "Content-Type": "text/plain",
+	            // res.writeHead(200, {"Content-Type": "application/json",
+	            "Access-Control-Allow-Origin":"*",
+	            "Access-Control-Allow-Methods": "GET, POST"
+	        });
+    		res.end(JSON.stringify(result));
         }
 	});
 		

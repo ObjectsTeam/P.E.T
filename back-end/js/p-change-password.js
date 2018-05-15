@@ -44,7 +44,7 @@ var $changePasswordPanel = (function() {
 				    if (xhr.readyState == 4) {
 				        //表示服务器的相应代码是200；正确返回了数据
 				        if(xhr.status == 200){
-				            console.log("success!");
+				            alert("success!");
 				        }
 				    }
 				};
