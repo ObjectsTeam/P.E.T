@@ -52,7 +52,7 @@ var $signUp = (function(){
 				        }
 				    }
 				};
-				xhr.open("post","http://127.0.0.1:8080?"+$('#username').val()+-+$('#psw').val(),true);//使用POST方法
+				xhr.open("post","http://127.0.0.1:8080?"+$('#username').val()+"-"+$('#psw').val(),true);//使用POST方法
 		        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 		        xhr.send();
 			}

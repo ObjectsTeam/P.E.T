@@ -38,7 +38,7 @@ var $peopleListPanel = (function() {
 				        }
 				    }
 				};
-				xhr.open("get","http://127.0.0.1:8080?"+"userid="+id,true);//使用POST方法
+				xhr.open("get","http://127.0.0.1:8081?"+"userid="+id,true);//使用POST方法
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
         xhr.send();
 	  });

@@ -24,6 +24,22 @@ var $playList2Panel = (function() {
     });
     $('#table').on('click','button',function(){
 	  	$(this).parents('tr').remove();
+				var id = $(this).parents('tr').find("td")[0].innerText;
+				console.log(id)
+				//创建http服务
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function () {
+	//			    console.log(xhr.readyState,xhr.status);
+				    if (xhr.readyState == 4) {
+				        //表示服务器的相应代码是200；正确返回了数据
+				        if(xhr.status == 200){
+				        	
+				        }
+				    }
+				};
+				xhr.open("get","http://127.0.0.1:8081?"+"userid="+id,true);//使用POST方法
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
+        xhr.send();
 	  });
   }
   return {show: show};

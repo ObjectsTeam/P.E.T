@@ -22,7 +22,7 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var addVip = 'insert into userlist(id,username,password) values(0,?,?)';
+	var addVip = 'insert into adminlist(id,username,password) values(0,?,?)';
 	var param = [data.substr(0,data.indexOf("-")),data.substr(data.indexOf("-")+1)];
 	connection.query(addVip, param,function (err, result) {
 	      if(err){
@@ -106,7 +106,7 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var userSql = "update userlist set password="+JSON.stringify(data.substr(0,data.indexOf("-")))+" where username="+JSON.stringify(data.substr(data.indexOf("-")+1));
+	var userSql = "update adminlist set password="+JSON.stringify(data.substr(0,data.indexOf("-")))+" where username="+JSON.stringify(data.substr(data.indexOf("-")+1));
 //	var param = [1000, 2];
 	connection.query(userSql,function (error, result) {
 	  if(error)
