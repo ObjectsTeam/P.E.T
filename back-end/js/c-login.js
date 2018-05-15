@@ -26,35 +26,38 @@ var $login = (function(){
 			//创建http服务
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function () {
-//			    console.log(xhr.readyState,xhr.status);
+			    console.log(xhr.readyState,xhr.status);
 			    if (xhr.readyState == 4) {
 			        //表示服务器的相应代码是200；正确返回了数据
 			        if(xhr.status == 200){
 			            var message = xhr.responseText;
-			            var data = JSON.parse(message)[0];
+			            var data = JSON.parse(message);
 			            console.log(data);
 			            function validate(){
-							if(data.username == $('#username').val()){
-								$('#user').css('color','black');
-								if(data.password == $('#psw').val()){
-									return true;
+			            	for(var i=0;i<data.length;i++){
+								if(data[i].username == $('#username').val()){
+									$('#user').css('color','black');
+									if(data[i].password == $('#psw').val()){
+										return true;
+									}else{
+										$('#userpsw').css('color','red');
+									}
 								}else{
-									$('#userpsw').css('color','red');
+									$('#user').css('color','red');
 								}
-							}else{
-								$('#user').css('color','red');
 							}
 						}
 			            e.preventDefault();
 						if(validate()){
 							//合法性校验
+							localStorage.setItem("username",$('#username').val());
 							location.hash = '#/index';
 							app.isLogin = true;
 						}
 			        }
 			    }
 			};
-			xhr.open("get","http://127.0.0.1:8080?"+"userlist",true);//使用POST方法
+			xhr.open("get","http://127.0.0.1:8083?"+"userlist",true);//使用POST方法
 	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 	        xhr.send();
 			

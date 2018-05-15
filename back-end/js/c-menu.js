@@ -79,25 +79,29 @@ var $menu = (function(){
 			var $menuItem = $(e.currentTarget).find('p').attr('data-href');
 			var panel = getPanel($menuItem);
 			console.log(panel);
-			//创建http服务
-			var xhr = new XMLHttpRequest();
-			xhr.onreadystatechange = function () {
-//			    console.log(xhr.readyState,xhr.status);
-			    if (xhr.readyState == 4) {
-			        //表示服务器的相应代码是200；正确返回了数据
-			        if(xhr.status == 200){
-			            var message = xhr.responseText;
-			            var result = JSON.parse(message);
-			            app[panel] = result;
-//			            console.l/og(app[panel]);
-			            //stage局部刷新
-			            location.hash = $menuItem;
-			        }
-			    }
-			};
-			xhr.open("get","http://127.0.0.1:8080?"+panel,true);//使用POST方法
-	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
-	        xhr.send();
+			if(panel.indexOf("list")>0){
+				//创建http服务
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function () {
+	//			    console.log(xhr.readyState,xhr.status);
+				    if (xhr.readyState == 4) {
+				        //表示服务器的相应代码是200；正确返回了数据
+				        if(xhr.status == 200){
+				            var message = xhr.responseText;
+				            var result = JSON.parse(message);
+				            app[panel] = result;
+	//			            console.l/og(app[panel]);
+				            //stage局部刷新
+				            location.hash = $menuItem;
+				        }
+				    }
+				};
+				xhr.open("get","http://127.0.0.1:8083?"+panel,true);//使用POST方法
+		        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
+		        xhr.send();
+		    }else{
+		    	location.hash = $menuItem;
+		    }
 		})
 	}
 	
