@@ -48,7 +48,7 @@ http.createServer(function(req,res){
 	  user     : 'root',              
 	  password : '123456lmz',       
 	  port: '3306',                   
-	  database: 'pet', 
+	  database: 'front', 
 	}); 
 	connection.connect(function(err){
 		if(err){
@@ -57,7 +57,7 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var userSql = "update adminlist set password="+JSON.stringify(data.substr(0,data.indexOf("-")))+" where username="+JSON.stringify(data.substr(data.indexOf("-")+1));
+	var userSql = "update userlist set password="+JSON.stringify(data.substr(0,data.indexOf("-")))+" where username="+JSON.stringify(data.substr(data.indexOf("-")+1));
 //	var param = [1000, 2];
 	connection.query(userSql,function (error, result) {
 	  if(error)
@@ -79,7 +79,7 @@ http.createServer(function(req,res){
 	});
 }).listen(8085,"127.0.0.1");
 
-//查询表
+//查询goods表
 http.createServer(function(req,res){
 	var data = req.url.slice(2);
 	console.log(data);
@@ -98,7 +98,7 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var selectVip = 'SELECT * FROM '+data
+	var selectVip = 'SELECT * FROM goodslist'
 	connection.query(selectVip,function (err, result) {
         if(err){
           console.log('[SELECT ERROR] - ',err.message);

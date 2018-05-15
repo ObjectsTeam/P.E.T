@@ -90,6 +90,9 @@ var $menu = (function(){
 				            var message = xhr.responseText;
 				            var result = JSON.parse(message);
 				            app[panel] = result;
+//				            console.log(typeof result[0].img)
+//				            console.log(result[0].img.substr(1,result[0].img.length-2))
+//				            console.log(result[0].img.substr(1,result[0].img.length-2).split(",")[0]);
 	//			            console.l/og(app[panel]);
 				            //stage局部刷新
 				            location.hash = $menuItem;
