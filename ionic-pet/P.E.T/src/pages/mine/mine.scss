@@ -1,4 +1,9 @@
 page-mine {
+    ion-content{
+        ion-item{
+            border-bottom: 1px solid #f0edec !important;
+        }
+    }
     .div1{
         background:linear-gradient(to top right, #e7767e, #f7d5da, #e9748f) ;
         height: 135px;
