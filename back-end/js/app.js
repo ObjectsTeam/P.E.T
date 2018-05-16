@@ -1,6 +1,7 @@
 $(function(){
 	if(!app.isLogin){
 		$login.show();
+		location.hash="/login"
 	}
 	
 	window.onhashchange = function(){
