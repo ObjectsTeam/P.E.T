@@ -52,12 +52,12 @@ var $login = (function(){
 							//合法性校验
 							localStorage.setItem("username",$('#username').val());
 							location.hash = '#/index';
-							app.isLogin = true;
+							localStorage.setItem('Logined',true);
 						}
 			        }
 			    }
 			};
-			xhr.open("get","http://127.0.0.1:8083?"+"adminlist",true);//使用POST方法
+			xhr.open("get","http://127.0.0.1:8083?adminlist",true);//使用POST方法
 	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 	        xhr.send();
 			

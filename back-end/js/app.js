@@ -1,7 +1,13 @@
 $(function(){
-	if(!app.isLogin){
+	if(!localStorage.getItem('Logined')){
 		$login.show();
 		location.hash="/login"
+	}else{
+		$('#admin-app').html("");
+		$header.show();
+		$menu.show();
+		$stage.show();
+		$footer.show();
 	}
 	
 	window.onhashchange = function(){
@@ -13,7 +19,7 @@ $(function(){
 			$footer.show();
 		}else if(location.hash === '#/login'){
 			$login.show();
-			app.isLogin = false;
+			localStorage.removeItem('Logined')
 		}else if(location.hash === '#/signUp'){
 			$signUp.show();
 		}else {

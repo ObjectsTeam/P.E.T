@@ -81,6 +81,10 @@ var $menu = (function(){
 			console.log(panel);
 			if(panel.indexOf("list")>0){
 				//创建http服务
+				var obj = {
+					'panel':panel
+				}
+				console.log(obj.panel);
 				var xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function () {
 	//			    console.log(xhr.readyState,xhr.status);
@@ -98,7 +102,7 @@ var $menu = (function(){
 				        }
 				    }
 				};
-				xhr.open("get","http://127.0.0.1:8083?"+panel,true);//使用POST方法
+				xhr.open("get","http://127.0.0.1:8083?"+obj.panel,true);//使用POST方法
 		        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 		        xhr.send();
 		    }else{

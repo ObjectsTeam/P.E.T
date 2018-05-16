@@ -70,4 +70,3 @@ app.menuDate = [
 		]
 	}
 ];
-app.isLogin = false;
