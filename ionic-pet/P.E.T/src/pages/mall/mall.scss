@@ -9,4 +9,21 @@ page-mall {
         width: 100%;
         padding: 0
     }
+    .btn{
+        position: relative;
+        top: 2px;
+        border-radius: 50px;
+        border: 1px yellow solid;
+        color:yellow;
+        background-color: transparent
+    }
+    .price{
+        color: red;
+        position: relative;
+        top: 5px
+    }
+    .loc{
+        position: relative;
+        left: 2%;
+    }
 }

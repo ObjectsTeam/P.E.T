@@ -16,11 +16,11 @@
 // automatically applied to the <body> element in the app.
 @font-face {
   font-family: 'Ionicons';  /* project id 615401 */
-  src: url('../assets/iconfont/iconfont.eot');
-  src: url('../assets/iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
-  url('../assets/iconfont/iconfont.woff') format('woff'),
-  url('../assets/iconfont/iconfont.ttf') format('truetype'),
-  url('../assets/iconfont/iconfont.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_615401_0s98qggundygb9.eot');
+  src: url('//at.alicdn.com/t/font_615401_0s98qggundygb9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_615401_0s98qggundygb9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_615401_0s98qggundygb9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_615401_0s98qggundygb9.svg#iconfont') format('svg');
 }
 .iconfont{
   font-family:"Ionicons" !important;
@@ -49,4 +49,10 @@
 }
 .ion-md-yes:before{
   content: "\e640";
+}
+.ion-md-ke:before{
+  content:"\e716"
+}
+.ion-md-shoucang:before{
+  content:"\e620"
 }
