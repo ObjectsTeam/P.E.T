@@ -1,0 +1,115 @@
+page-shop1 {
+   .content{
+        background-color: #f0edec
+    }
+    .slide1{
+        height: 30%;
+        width: 100%;
+        padding: 0
+    }
+    .til{
+        position: relative;
+        top: -4px
+    }
+    .price{
+        color: red
+    }
+    .sale{
+        position: relative;
+        left: 6%;
+    }
+    .last{
+        font-size: 11px
+    }
+    .join{
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        text-align: center;
+        width: 80px;
+        height: 35px;
+        background:linear-gradient(to right, #ffc601, #ffb101, #ff9903)
+    }
+    .buy{
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        text-align: center;
+        background:linear-gradient(to right, #ff7500, #ff6300, #ff4d01);
+        width: 80px;
+        height: 35px;
+        position: relative;
+        left: 80px;
+        top: -35px
+    }
+    .item1{
+        position: relative;
+        top: 1%;
+        height: 50px;
+    }
+    .item1 .label-md{
+        position: relative;
+        top: 21%;
+        
+    }
+    .ion-1{
+        width: 50px
+    }
+    .shopadd{
+        position: relative;
+        left: 74%;
+        top: -19px
+    }
+    .foot{
+        font-weight: 550;
+        color: #ffffff;
+        position: relative;
+        left: 50%;
+        top: -186px
+    }
+    .foot span{
+        position: relative;
+        top:20%
+    }
+    .footer{
+        background-color: #ffffff
+    }
+    .imgs{
+        width: 200px;
+    }
+
+    .img2{
+        position: relative;
+        top: -60px;
+        left: 56px;
+    }
+    .p2{
+        position: relative;
+        font-size: 10px;
+        top: -74px;
+        left: 64px;
+    }
+    .img1{
+        position: relative;
+        top: 6px;
+        left: 13px;
+    }
+    .p1{
+        position: relative;
+        top: -3px;
+        left: 15px;
+        font-size: 10px
+    }
+    .img3{
+        position: relative;
+        top: -126px;
+        left: 105px;
+    }
+    .p3{
+        position: relative;
+        font-size: 10px;
+        top: -135px;
+        left: 108px;
+    }
+    ion-footer{
+        height: 50px;
+    }
+}
