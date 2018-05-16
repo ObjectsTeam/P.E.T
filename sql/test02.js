@@ -66,7 +66,7 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var deleteVip = 'delete from peoplelist where ' + data;
+	var deleteVip = 'delete from '+data.substr(0,data.indexOf("-"))+' where ' + data.substr(data.indexOf("-")+1);
 	connection.query(deleteVip, function(error, result){
 	  if(error)
 	  {

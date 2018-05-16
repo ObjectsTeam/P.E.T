@@ -24,7 +24,7 @@ http.createServer(function(req,res){
 		}
 	});
 	var addVip = 'insert into userlist(username,passworld) values(?,?)';
-	var param = [100,'100元秒杀家教机'];
+	var param = [data.substr(0,data.indexOf("-")),data.substr(data.indexOf("-")+1)];
 	connection.query(addVip, param,function (err, result) {
 	      if(err){
 	        console.log('[INSERT ERROR] - ',err.message);

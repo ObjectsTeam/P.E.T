@@ -71,7 +71,7 @@ var $menu = (function(){
 		    var panel = router.replace(/-(.)/g, function(letter){
 		      return letter;
 		    }).replace(/#\//,'').replace(/-/g,'');
-		
+			localStorage.setItem("panel",panel);
 		    return panel;
 		};
 		//侧边栏点击事件
@@ -93,7 +93,6 @@ var $menu = (function(){
 //				            console.log(typeof result[0].img)
 //				            console.log(result[0].img.substr(1,result[0].img.length-2))
 //				            console.log(result[0].img.substr(1,result[0].img.length-2).split(",")[0]);
-	//			            console.l/og(app[panel]);
 				            //stage局部刷新
 				            location.hash = $menuItem;
 				        }
