@@ -71,7 +71,7 @@ var $menu = (function(){
 		    var panel = router.replace(/-(.)/g, function(letter){
 		      return letter;
 		    }).replace(/#\//,'').replace(/-/g,'');
-//			localStorage.setItem("panel",panel);
+			localStorage.setItem("panel",panel);
 		    return panel;
 		};
 		//侧边栏点击事件
