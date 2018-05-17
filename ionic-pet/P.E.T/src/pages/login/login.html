@@ -22,7 +22,7 @@
     <ion-label><img src="assets/imgs/login-02.png" alt=""></ion-label>
     <ion-input type="password" placeholder="请输入您的密码"></ion-input>
   </ion-item>
-  <p>忘记密码?</p>
+  <p (click)="goRepass()">忘记密码?</p>
   <button class="login-btn1" ion-button color="btn1">登录</button>
   <button class="login-btn2" ion-button color="btn2" (click)="goRegister()">注册</button>
 </ion-content>

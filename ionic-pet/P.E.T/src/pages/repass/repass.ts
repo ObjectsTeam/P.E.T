@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the RepassPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,21 +10,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-repass',
+  templateUrl: 'repass.html',
 })
-export class LoginPage {
+export class RepassPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    console.log('ionViewDidLoad RepassPage');
   }
-  goRegister(){
-    this.navCtrl.push('RegisterPage');
+  goLogin(){
+    this.navCtrl.push('LoginPage');
   }
-  goRepass(){
-    this.navCtrl.push('RepassPage');
-  }
+
 }
