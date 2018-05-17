@@ -1,8 +1,9 @@
 var $peopleListPanel = (function() {
   function show() {
-    $(app.config.panelContainer).html('');
-    $(app.config.panelContainer).append(''
+    $(app.config.panelContainer).html(''
 	    +'<div class="mbx">用户管理>用户列表</div>'
+    	+'<input type="button" value="添加" id="addBtn"/>');
+    $(app.config.panelContainer).append(''
 	    +'<table id="table">'
 	    +'<tr>'
 	    +'</tr>'
@@ -23,6 +24,19 @@ var $peopleListPanel = (function() {
 	  		+'<td><button>删除</button></td>'
 	  		+'</tr>');
 	  });
+	  $('#addBtn').click(function(){
+			$('#table').append(''
+	  		+'<tr>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><button>删除</button></td>'
+	  		+'</tr>');
+	  		console.log()
+		})
 	  $('#table').on('click','button',function(){
 	  	$(this).parents('tr').remove();
 				var id = $(this).parents('tr').find("td")[0].innerText;

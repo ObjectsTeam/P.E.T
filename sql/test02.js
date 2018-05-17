@@ -56,7 +56,6 @@ http.createServer(function(req,res){
 				      }else{
 				      	console.log('--------------------------insert----------------------------');
 				      	console.log('insert id: '+result.insertId);
-							console.log(result);
 				      	console.log('------------------------------------------------------------\n\n');  
 				        res.writeHead(200, {
 				            "Content-Type": "text/plain",

@@ -4,13 +4,13 @@ var $signUp = (function(){
 			+'<h1>管理后台注册</h1>'
 			+'<form>'
 				+'<label>用户名　</label>'
-				+'<input type="text" id="username"/><i>　*</i>'
+				+'<input type="text" id="username"/><i class="user">　*</i>'
 				+'<br />'
 				+'<label>密　码　</label>'
-				+'<input type="password" id="psw"/><i>　*</i>'
+				+'<input type="password" id="psw"/><i class="psw">　*</i>'
 				+'<br />'
 				+'<label>确　认　</label>'
-				+'<input type="password" id="psw2"/><i>　*</i>'
+				+'<input type="password" id="psw2"/><i class="psw2">　*</i>'
 				+'<br />'
 //				+'<label>验证码　</label>'
 //				+'<input type="text" id="inp-yzm"/>'
@@ -25,11 +25,17 @@ var $signUp = (function(){
 		var $form = $('form');
 		function validate(){
 			if($('#username').val() !== ""){
+				$('.user').css('color','black');
 				if($('#psw').val() !== ""){
 					if($('#psw').val() === $('#psw2').val()){
+						$('.psw2').css('color','black')
 						return true;
+					}else{
+						$('.psw2').css('color','red')
 					}
 				}
+			}else{
+				$('.user').css('color','red');
 			}
 		}
 		$form.submit(function(e){
@@ -49,7 +55,11 @@ var $signUp = (function(){
 				        if(xhr.status == 200){
 				        	var message = xhr.responseText;
 				        	console.log(message);
-				            location.hash = '#/login';
+				        	if(message == 1){
+				            	location.hash = '#/login';
+				            }else{
+				            	$('.user').css('color','red');
+				            }
 				        }
 				    }
 				};

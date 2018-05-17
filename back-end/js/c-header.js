@@ -53,6 +53,7 @@ var $header = (function(){
 			$arrow.removeClass('icon-arrowup');
 		});
 		$menu.click(function(){
+			localStorage.removeItem('Logined');
 			location.hash = '#/login';
 		});
 	}

@@ -1,8 +1,9 @@
 var $playListPanel = (function() {
   function show(config) {
-    $(app.config.panelContainer).html('');
+    $(app.config.panelContainer).html(''
+	    +'<div class="mbx">活动管理>活动列表</div>'
+    	+'<input type="button" value="添加" id="addBtn"/>');
     $(app.config.panelContainer).append(''
-    	+'<div class="mbx">活动管理>活动列表</div>'
     	+'<table id="table">'
     	+'<tr></tr>'
     	+'</table>');
