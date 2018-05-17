@@ -25,11 +25,12 @@ export class MallPage {
     this.modalCtrl.create('Shop1Page',{id:i.id}).present();
     console.log(i.id)
   }
- shop1=JSON.parse(localStorage.getItem('res'))[0].img
-   shop=JSON.parse(this.shop1);
+ shop=JSON.parse(localStorage.getItem('res'))
+   //shop=JSON.parse(this.shop1);
 
   ionViewDidLoad() { 
-    console.log(this.shop1)
+    //console.log(this.shop1)
+    
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       console.log(xhr.readyState,xhr.status);
@@ -38,16 +39,13 @@ export class MallPage {
         if(xhr.status == 200){
           var message = xhr.responseText;
           var result = JSON.parse(message);
-          localStorage.setItem('res',message)
-          
+          localStorage.setItem('res',message)   
           console.log(result)
         }
       }
     };
     xhr.open("post","http://127.0.0.1:8086?",true);//使用POST方法
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");//POST需增加
-    xhr.send();
-
-
+    xhr.send()
   }
 }

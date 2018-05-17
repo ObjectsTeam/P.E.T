@@ -3,7 +3,8 @@ page-car {
         background-color: #f0edec
     }
     .footer{
-        background-color: #ffffff
+        background-color: #ffffff;
+        height: 50px;
     }
     .shopadd{
         position: relative;
@@ -32,7 +33,41 @@ page-car {
         position: relative;
         left: 5px;
     }
+    .span3{
+        position: relative;
+        left: 40%;
+    }
+    .span4{
+        position: relative;
+        left: 42%;
+        color: red
+    }
+    .footer .label-md{
+        margin: 0
+    }
     .item-radio-checked.item-md ion-label{
         color:black
+    }
+    .jiesuan{
+        text-align: center;
+        position: relative;
+        background:linear-gradient(to right, #ff7500, #ff6300, #ff4d01);
+        left: 80%;
+        top: -44px;
+        width: 71px;
+        height: 50px;
+    }
+    .jiesuan span{
+        position: relative;
+        top: 32%;
+        color: #ffffff;
+        font-weight: 600
+    }
+    .checkbox-md .checkbox-checked{
+        border-color: #ff4d01;
+        background-color: #ff4d01
+    }
+    .footer .item.item-md .checkbox-md{
+        margin: 0
     }
 }

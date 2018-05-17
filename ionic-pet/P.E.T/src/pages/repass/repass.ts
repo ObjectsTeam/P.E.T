@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CarPage } from '../car/car';
 
 /**
- * Generated class for the MinePage page.
+ * Generated class for the RepassPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,18 +10,19 @@ import { CarPage } from '../car/car';
 
 @IonicPage()
 @Component({
-  selector: 'page-mine',
-  templateUrl: 'mine.html',
+  selector: 'page-repass',
+  templateUrl: 'repass.html',
 })
-export class MinePage {
+export class RepassPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  
-  name='点点';
-  gocar(){
-    this.navCtrl.push('CarPage');
-    }
-  
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad RepassPage');
+  }
+  goLogin(){
+    this.navCtrl.push('LoginPage');
+  }
+
 }
