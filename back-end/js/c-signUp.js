@@ -36,23 +36,24 @@ var $signUp = (function(){
 			e.preventDefault();
 			//合法性校验
 			if(validate()){
-				var user = JSON.stringify({
-					username:$('#username').val(),
-					passworld:$('#psw').val()
-				});
-				console.log(user);
 				//创建http服务
+				var obj={
+					"username":$('#username').val(),
+					"password":$('#psw').val()
+				}
 				var xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function () {
-				    console.log(xhr.readyState,xhr.status);
+//				    console.log(xhr.readyState,xhr.status);
 				    if (xhr.readyState == 4) {
 				        //表示服务器的相应代码是200；正确返回了数据
 				        if(xhr.status == 200){
+				        	var message = xhr.responseText;
+				        	console.log(message);
 				            location.hash = '#/login';
 				        }
 				    }
 				};
-				xhr.open("post","http://127.0.0.1:8080?"+$('#username').val()+"-"+$('#psw').val(),true);//使用POST方法
+				xhr.open("post","http://127.0.0.1:8080?"+obj.username+","+obj.password,true);//使用POST方法
 		        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 		        xhr.send();
 			}
