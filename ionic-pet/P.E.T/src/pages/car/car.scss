@@ -3,7 +3,8 @@ page-car {
         background-color: #f0edec
     }
     .footer{
-        background-color: #ffffff
+        background-color: #ffffff;
+        height: 50px;
     }
     .shopadd{
         position: relative;
@@ -32,7 +33,27 @@ page-car {
         position: relative;
         left: 5px;
     }
+    .span3{
+        position: relative;
+        left: 40%;
+    }
+    .footer .label-md{
+        margin: 0
+    }
     .item-radio-checked.item-md ion-label{
         color:black
+    }
+    .jiesuan{
+        position: relative;
+        background-color: red;
+        left: 80%;
+        top: -44px;
+        width: 50px;
+        height: 100px;
+    }
+    .radio1 .radio radio-md{
+        margin: 0!important;
+        position: relative;
+        top: -49px;
     }
 }
