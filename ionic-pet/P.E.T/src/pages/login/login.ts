@@ -24,7 +24,4 @@ export class LoginPage {
   goRegister(){
     this.navCtrl.push('RegisterPage');
   }
-  goRepass(){
-    this.navCtrl.push('RepassPage');
-  }
 }

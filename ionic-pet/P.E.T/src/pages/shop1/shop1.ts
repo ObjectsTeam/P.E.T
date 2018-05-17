@@ -45,7 +45,25 @@ export class Shop1Page {
       duration: 2000
     });
     toast.present();
-  
+    var obj={
+      'goodsname':this.shop[this.id].name,
+       'price':this.shop[this.id].price,
+       'num':this.number
+     }
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        console.log(xhr.readyState,xhr.status);
+        if (xhr.readyState == 4) {
+          //表示服务器的相应代码是200；正确返回了数据
+          if(xhr.status == 200){
+           console.log('no')
+          }
+        }
+      };
+      xhr.open("post","http://127.0.0.1:8087?"+obj.goodsname+","+obj.price+","+obj.num,true);//使用POST方法
+      xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");//POST需增加
+      xhr.send();
+      console.log(this.shop[this.id].name,this.shop[this.id].price,this.number)
   }
   shop=JSON.parse(localStorage.getItem('res'));
   ionViewDidLoad() { 
@@ -65,9 +83,5 @@ export class Shop1Page {
     xhr.open("post","http://127.0.0.1:8086?",true);//使用POST方法
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");//POST需增加
     xhr.send();
-
-
   }
-  
-
 }

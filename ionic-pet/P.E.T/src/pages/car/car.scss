@@ -37,6 +37,11 @@ page-car {
         position: relative;
         left: 40%;
     }
+    .span4{
+        position: relative;
+        left: 42%;
+        color: red
+    }
     .footer .label-md{
         margin: 0
     }
@@ -44,16 +49,25 @@ page-car {
         color:black
     }
     .jiesuan{
+        text-align: center;
         position: relative;
-        background-color: red;
+        background:linear-gradient(to right, #ff7500, #ff6300, #ff4d01);
         left: 80%;
         top: -44px;
-        width: 50px;
-        height: 100px;
+        width: 71px;
+        height: 50px;
     }
-    .radio1 .radio radio-md{
-        margin: 0!important;
+    .jiesuan span{
         position: relative;
-        top: -49px;
+        top: 32%;
+        color: #ffffff;
+        font-weight: 600
+    }
+    .checkbox-md .checkbox-checked{
+        border-color: #ff4d01;
+        background-color: #ff4d01
+    }
+    .footer .item.item-md .checkbox-md{
+        margin: 0
     }
 }

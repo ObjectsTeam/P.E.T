@@ -21,6 +21,7 @@ import { MinePage } from '../pages/mine/mine';
 import { MallPage } from '../pages/mall/mall';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
+import { LoginPage } from '../pages/login/login';
 @NgModule({
   declarations: [
     MyApp,
@@ -29,7 +30,8 @@ import { Base64 } from '@ionic-native/base64';
     HomePage,
     TabsPage,
     MinePage,
-    MallPage
+    MallPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { Base64 } from '@ionic-native/base64';
     HomePage,
     TabsPage,
     MinePage,
-    MallPage
+    MallPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
