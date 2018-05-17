@@ -41,6 +41,7 @@ export class Shop1Page {
   gocar() {
     let toast = this.toastCtrl.create({
       message: '成功加入我的订单',
+      position:'middle',
       duration: 2000
     });
     toast.present();

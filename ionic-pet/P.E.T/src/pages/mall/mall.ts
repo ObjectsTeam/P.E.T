@@ -25,11 +25,11 @@ export class MallPage {
     this.modalCtrl.create('Shop1Page',{id:i.id}).present();
     console.log(i.id)
   }
- shop1=JSON.parse(localStorage.getItem('res'))[0].img
-   shop=JSON.parse(this.shop1);
+ shop=JSON.parse(localStorage.getItem('res'))
+   //shop=JSON.parse(this.shop1);
 
   ionViewDidLoad() { 
-    console.log(this.shop1)
+    //console.log(this.shop1)
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       console.log(xhr.readyState,xhr.status);
