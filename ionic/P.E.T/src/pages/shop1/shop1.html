@@ -1,0 +1,44 @@
+
+<ion-header text-center>
+
+  <ion-navbar color='home'>
+    <ion-title>优质宠粮</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="content">
+
+    <ion-slides pager loop autoplay='1500' class="slide1">
+        <ion-slide *ngFor="let i of shop;let l=index">
+          <img src="{{shop[id].img[l]}}" height="50%">
+        </ion-slide>
+    </ion-slides>
+    <ion-item no-lines>
+      <span class="til">{{shop[id].name}}</span>
+      <p class="price">￥{{shop[id].price}}</p>
+      <p class="last"><span>运费 ：￥0-6</span><span class="sale">销量：5555</span></p>
+    </ion-item>
+    <ion-item class="item1" no-lines>
+      <span>数量选择</span>
+      <div class="shopadd">
+        <button class="next" (click)='next()'>-</button>
+        <input type="text" [(ngModel)]='number' size="1">
+        <button class="add" (click)='add()'>+</button>
+      </div>
+    </ion-item>
+    <ion-footer class="footer">
+      <div class="imgs">
+        <img src="assets/imgs/商城.png" width="25px" class="img1"><p class="p1">店铺</p>
+        <img src="assets/imgs/客服.png" width="35px" class="img2"><p class="p2">客服</p>
+        <img src="assets/imgs/收藏.png" width="25px" class="img3"><p class="p3">收藏</p>
+      </div>
+      
+      <div class="foot">
+        <div class="join" (click)='gobuy()'><span>立即购买</span></div>
+        <div class="buy" (click)='gocar()'><span>加入订单</span></div> 
+      </div>
+    </ion-footer>
+   
+</ion-content>

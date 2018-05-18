@@ -1,0 +1,40 @@
+<ion-header text-center >
+  <ion-navbar color='home' >
+    
+    <ion-title > 
+        <ion-icon name='locate' class="locate" (click)='gol()'></ion-icon>
+      P.E.T
+      <ion-icon name='qr-scanner' class="scanner" (click)='qrscan()'></ion-icon>
+    </ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home-content"> 
+    <ion-slides pager loop autoplay='1500' class="slide1">
+      <ion-slide>
+        <img src="assets/imgs/gou02.jpg" height="50%">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/haozi.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/gou.jpg">
+      </ion-slide>
+    </ion-slides>
+    <ion-grid class="home-grid">
+      <ion-row>
+        <ion-col (click)='go1()'><img src="assets/imgs/icon_sex.png"><p>宠物相亲</p></ion-col>
+        <ion-col (click)='go2()'><img src="assets/imgs/icon_found.png"> <p>宠物招领</p></ion-col>
+        <ion-col (click)='go3()'><img src="assets/imgs/icon_adopt.png"><p>宠物领养</p></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item class="home-list1" no-lines>
+      <div class="list-div"></div>
+      <span>最新文章</span>
+    </ion-item>
+    <ion-item class="home-list2" no-lines>
+      <div class="list-div"></div>
+      <span>最新推荐</span>
+    </ion-item>
+</ion-content>
