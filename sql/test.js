@@ -1,4 +1,4 @@
-var mysql  = require('mysql');  
+﻿var mysql  = require('mysql');  
 var http = require("http");
 var url = require("url");
 var mysql  = require('mysql'); 
@@ -192,6 +192,7 @@ http.createServer(function(req,res){
 http.createServer(function(req,res){
 	data = req.url.slice(2).split(',');
 	console.log(data);
+	console.log(typeof(data));
 	//创建sql服务
 	var connection = mysql.createConnection({     
 	  host     : 'localhost',       
