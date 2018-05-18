@@ -1,8 +1,9 @@
 var $peopleListPanel = (function() {
   function show() {
-    $(app.config.panelContainer).html('');
-    $(app.config.panelContainer).append(''
+    $(app.config.panelContainer).html(''
 	    +'<div class="mbx">用户管理>用户列表</div>'
+    	+'<input type="button" value="添加" id="addBtn"/>');
+    $(app.config.panelContainer).append(''
 	    +'<table id="table">'
 	    +'<tr>'
 	    +'</tr>'
@@ -23,6 +24,38 @@ var $peopleListPanel = (function() {
 	  		+'<td><button>删除</button></td>'
 	  		+'</tr>');
 	  });
+	  $('#addBtn').click(function(){
+			$('#table').append(''
+	  		+'<tr>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td><input type="text" id="lasttd"/></td>'
+	  		+'<td><button>删除</button></td>'
+	  		+'</tr>');
+	  		var arr=[];
+	  		$('#table').on('blur','input',function(){
+	  			arr.push($(this).val())
+	  		});
+	  		$('#lasttd').blur(function(){
+	  			//创建http服务
+					var xhr = new XMLHttpRequest();
+					xhr.onreadystatechange = function () {
+						//console.log(xhr.readyState,xhr.status);
+					    if (xhr.readyState == 4) {
+					        //表示服务器的相应代码是200；正确返回了数据
+					        if(xhr.status == 200){
+					        	
+					        }
+					    }
+					};
+					xhr.open("get","http://127.0.0.1:8079?"+arr[0]+','+arr[1]+','+arr[2]+','+arr[3]+','+arr[4]+','+arr[5],true);//使用POST方法
+	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
+	        xhr.send();
+	  		})
+		})
 	  $('#table').on('click','button',function(){
 	  	$(this).parents('tr').remove();
 				var id = $(this).parents('tr').find("td")[0].innerText;

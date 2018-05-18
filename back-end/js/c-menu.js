@@ -84,7 +84,6 @@ var $menu = (function(){
 				var obj = {
 					'panel':panel
 				}
-				console.log(obj.panel);
 				var xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function () {
 	//			    console.log(xhr.readyState,xhr.status);

@@ -57,11 +57,19 @@ http.createServer(function(req,res){
 				      }else{
 				      	console.log('--------------------------insert----------------------------');
 				      	console.log('insert id: '+result.insertId);
-							console.log(result);
 				      	console.log('------------------------------------------------------------\n\n');  
+				      	res.writeHead(200, {
+				            "Content-Type": "text/plain",
+				            // res.writeHead(200, {"Content-Type": "application/json",
+				            "Access-Control-Allow-Origin":"*",
+				            "Access-Control-Allow-Methods": "GET, POST"
+				        });
+			    		res.end("1");
 				      }
 				});
 			}
+	    }
+    });
 }).listen(8084,"127.0.0.1");
 
 //改密码
@@ -219,13 +227,20 @@ http.createServer(function(req,res){
 				console.log(result);
 	      	console.log('------------------------------------------------------------\n\n');  
 	      }
+	    res.writeHead(200, {
+		    "Content-Type": "text/plain;charset=utf-8",
+		    // res.writeHead(200, {"Content-Type": "application/json",
+		    "Access-Control-Allow-Origin":"*",
+		    "Access-Control-Allow-Methods": "GET, POST"
+        });
+		res.end("修改成功");
 	 
 	});
 }).listen(8087,"127.0.0.1");
 
 //删除购物车
 http.createServer(function(req,res){
-	var data = req.url.slice(2);
+	var data = req.url.slice(2).split(",");
 	console.log(data);
 	//创建sql服务
 	var connection = mysql.createConnection({     
@@ -242,7 +257,7 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var deleteVip = 'delete from carlist where name=' + data;
+	var deleteVip = 'delete from carlist where username='+data[0]+'and name='+data[1];
 	connection.query(deleteVip, function(error, result){
 	  if(error)
 	  {
@@ -302,45 +317,4 @@ http.createServer(function(req,res){
 		
 }).listen(8089,"127.0.0.1");
 
-console.log('start serve!')
-	
-	//删
-	//var addVip = 'delete from seckill where seckill_id = 1005';
-	//connection.query(addVip, function(error, result){
-	//  if(error)
-	//  {
-	//      console.log(error.message);
-	//  }else{
-	//      console.log('affectedRows: '+result.affectedRows);
-	//  }
-	//});
-	//
-	//connection.end();
-	
-	//改
-	//var userSql = "update seckill set number = number-1 where seckill_id = ?";
-	//var param = [1000, 2];
-	//connection.query(userSql, param, function (error, result) {
-	//  if(error)
-	//  {
-	//      console.log(error.message);
-	//  }else{
-	//      console.log('affectedRows: '+result.affectedRows);
-	//  }
-	//});
-	//connection.end();
-	
-	//查
-//	var sql = 'SELECT * FROM Active_List';
-//	connection.query(sql,function (err, result) {
-//	        if(err){
-//	          console.log('[SELECT ERROR] - ',err.message);
-//	        }else{
-//	        	console.log('--------------------------select----------------------------');
-//	        	console.log(result);
-//	        	console.log('------------------------------------------------------------\n\n');  
-//	        }
-//	});
-//	connection.end(function(){
-//		console.log("End a connection");
-//	});
+console.log('start serve!');

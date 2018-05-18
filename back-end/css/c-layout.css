@@ -24,7 +24,7 @@ html,body{
 	border: 1px solid #c2c2c2;
 }
 .login i{
-	color: red;
+	width: 50px;
 }
 .login h1{
 	font-size: 26px;
@@ -220,6 +220,12 @@ input[type="submit"],input[type="button"]{
 }
 #table button{
 	padding: 5px 10px;
+}
+#table input[type="text"]{
+	text-align: center;
+	width: 100px;
+	height: 40px;
+	border: none;
 }
 
 /*Footer*/

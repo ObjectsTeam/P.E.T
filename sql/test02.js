@@ -15,6 +15,31 @@ http.createServer(function(req,res){
 	  port: '3306',                   
 	  database: 'pet', 
 	});
+	var addVip = 'insert into peoplelist(userid,usersex,username,species,years,sex) values(?,?,?,?,?,?)';
+	var param = [data[0],data[1],data[2],data[3],data[4],data[5]];
+	connection.query(addVip,param,function (err, result) {
+        if(err){
+          console.log('[INSERT ERROR] - ',err.message);
+        }else{
+	      	console.log('--------------------------insert----------------------------');
+	      	console.log(result);
+	      	console.log('------------------------------------------------------------\n\n');  
+	    }
+	});
+}).listen(8079,"127.0.0.1");   
+
+//注册账户
+http.createServer(function(req,res){
+	var data = req.url.slice(2).split(",");
+	console.log(data);
+	//创建sql服务
+	var connection = mysql.createConnection({     
+	  host     : 'localhost',       
+	  user     : 'root',              
+	  password : '123456lmz',       
+	  port: '3306',                   
+	  database: 'pet', 
+	});
 	var selectVip = 'SELECT * FROM adminlist';
 	var exist;
 	connection.query(selectVip,function (err, result) {
@@ -56,7 +81,6 @@ http.createServer(function(req,res){
 				      }else{
 				      	console.log('--------------------------insert----------------------------');
 				      	console.log('insert id: '+result.insertId);
-							console.log(result);
 				      	console.log('------------------------------------------------------------\n\n');  
 				        res.writeHead(200, {
 				            "Content-Type": "text/plain",
@@ -73,7 +97,7 @@ http.createServer(function(req,res){
 	});
 }).listen(8080,"127.0.0.1");
 
-//删
+//删除数据
 http.createServer(function(req,res){
 	var data = req.url.slice(2);
 	console.log(data);
@@ -113,7 +137,7 @@ http.createServer(function(req,res){
 	});
 }).listen(8081,"127.0.0.1");
 
-//改
+//修改密码
 http.createServer(function(req,res){
 	var data = req.url.slice(2);
 	console.log(data);
