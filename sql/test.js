@@ -216,25 +216,40 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var addVip = 'insert into carlist(username,name,price,num) values(?,?,?,?)';
-	var param = [data[0],data[1],data[2],data[3]];
-	connection.query(addVip, param,function (err, result) {
-	      if(err){
-	        console.log('[INSERT ERROR] - ',err.message);
-	      }else{
-	      	console.log('--------------------------insert----------------------------');
-	      	console.log('insert id: '+result.insertId);
-				console.log(result);
+	var selectVip = 'SELECT * FROM classlist where id='+data[1]
+	connection.query(selectVip,function (err, result) {
+        if(err){
+          console.log('[SELECT ERROR] - ',err.message);
+        }else{
+	      	console.log('--------------------------select----------------------------');
+	      	console.log(result);
 	      	console.log('------------------------------------------------------------\n\n');  
-	      }
-	    res.writeHead(200, {
-		    "Content-Type": "text/plain;charset=utf-8",
-		    // res.writeHead(200, {"Content-Type": "application/json",
-		    "Access-Control-Allow-Origin":"*",
-		    "Access-Control-Allow-Methods": "GET, POST"
-        });
-		res.end("修改成功");
-	 
+	        res.writeHead(200, {
+	            "Content-Type": "text/plain",
+	            // res.writeHead(200, {"Content-Type": "application/json",
+	            "Access-Control-Allow-Origin":"*",
+	            "Access-Control-Allow-Methods": "GET, POST"
+	        });
+			var addVip = 'insert into carlist(username,name,price,num,img) values(?,?,?,?,?)';
+			var param = [data[0],result[0].name,result[0].price,data[2],result[0].img];
+			connection.query(addVip, param,function (err, result) {
+			      if(err){
+			        console.log('[INSERT ERROR] - ',err.message);
+			      }else{
+			      	console.log('--------------------------insert----------------------------');
+					console.log(result);
+			      	console.log('------------------------------------------------------------\n\n');  
+			      }
+			    res.writeHead(200, {
+				    "Content-Type": "text/plain;charset=utf-8",
+				    // res.writeHead(200, {"Content-Type": "application/json",
+				    "Access-Control-Allow-Origin":"*",
+				    "Access-Control-Allow-Methods": "GET, POST"
+		        });
+				res.end('1');
+			 
+			});
+		}
 	});
 }).listen(8087,"127.0.0.1");
 
