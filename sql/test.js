@@ -272,13 +272,15 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var deleteVip = 'delete from carlist where username='+data[0]+'and id='+data[1];
+	var deleteVip = 'delete from carlist where username='+data[0]+' and id='+data[1];
 	connection.query(deleteVip, function(error, result){
 	  if(error)
 	  {
 	    console.log('[DELETE ERROR] - ',error.message);
 	  }else{
-	    console.log('result: '+result);
+	    console.log('--------------------------delete----------------------------');
+		console.log(result);
+      	console.log('------------------------------------------------------------\n\n');  
         res.writeHead(200, {
             "Content-Type": "text/plain",
             // res.writeHead(200, {"Content-Type": "application/json",
