@@ -105,7 +105,7 @@ http.createServer(function(req,res){
             "Access-Control-Allow-Origin":"*",
             "Access-Control-Allow-Methods": "GET, POST"
         });
-		res.end("修改成功");
+		res.end("1");
 	  }
 	});
 	connection.end(function(){
@@ -230,8 +230,8 @@ http.createServer(function(req,res){
 	            "Access-Control-Allow-Origin":"*",
 	            "Access-Control-Allow-Methods": "GET, POST"
 	        });
-			var addVip = 'insert into carlist(username,name,price,num,img) values(?,?,?,?,?)';
-			var param = [data[0],result[0].name,result[0].price,data[2],result[0].img];
+			var addVip = 'insert into carlist(id,username,name,price,num,img) values(?,?,?,?,?,?)';
+			var param = [result[0].id,data[0],result[0].name,result[0].price,data[2],result[0].img];
 			connection.query(addVip, param,function (err, result) {
 			      if(err){
 			        console.log('[INSERT ERROR] - ',err.message);
@@ -272,7 +272,7 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var deleteVip = 'delete from carlist where username='+data[0]+'and name='+data[1];
+	var deleteVip = 'delete from carlist where username='+data[0]+'and id='+data[1];
 	connection.query(deleteVip, function(error, result){
 	  if(error)
 	  {
@@ -285,7 +285,7 @@ http.createServer(function(req,res){
             "Access-Control-Allow-Origin":"*",
             "Access-Control-Allow-Methods": "GET, POST"
         });
-		res.end("修改成功");
+		res.end("1");
 	  }
 	});
 	connection.end(function(){
