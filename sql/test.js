@@ -216,41 +216,75 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var selectVip = 'SELECT * FROM classlist where id='+data[1]
-	connection.query(selectVip,function (err, result) {
-        if(err){
-          console.log('[SELECT ERROR] - ',err.message);
-        }else{
-	      	console.log('--------------------------select----------------------------');
-	      	console.log(result);
-	      	console.log('------------------------------------------------------------\n\n');  
-	        res.writeHead(200, {
-	            "Content-Type": "text/plain",
-	            // res.writeHead(200, {"Content-Type": "application/json",
-	            "Access-Control-Allow-Origin":"*",
-	            "Access-Control-Allow-Methods": "GET, POST"
-	        });
-			var addVip = 'insert into carlist(id,username,name,price,num,img) values(?,?,?,?,?,?)';
-			var param = [result[0].id,data[0],result[0].name,result[0].price,data[2],result[0].img];
-			connection.query(addVip, param,function (err, result) {
-			      if(err){
-			        console.log('[INSERT ERROR] - ',err.message);
-			      }else{
-			      	console.log('--------------------------insert----------------------------');
-					console.log(result);
-			      	console.log('------------------------------------------------------------\n\n');  
-			      }
-			    res.writeHead(200, {
-				    "Content-Type": "text/plain;charset=utf-8",
-				    // res.writeHead(200, {"Content-Type": "application/json",
-				    "Access-Control-Allow-Origin":"*",
-				    "Access-Control-Allow-Methods": "GET, POST"
+	var seletcar='SELECT * FROM carlist where username='+data[0]+' and id='+data[1];
+		connection.query(seletcar,function (err, result) {
+	        if(result == ""){
+	            var selectVip = 'SELECT * FROM classlist where id='+data[1]
+				connection.query(selectVip,function (err, result) {
+			        if(err){
+			          console.log('[SELECT ERROR] - ',err.message);
+			        }else{
+				      	console.log('--------------------------select----------------------------');
+				      	console.log(result);
+				      	console.log('------------------------------------------------------------\n\n');  
+				        res.writeHead(200, {
+				            "Content-Type": "text/plain",
+				            // res.writeHead(200, {"Content-Type": "application/json",
+				            "Access-Control-Allow-Origin":"*",
+				            "Access-Control-Allow-Methods": "GET, POST"
+				        });
+						var addVip = 'insert into carlist(id,username,name,price,num,img) values(?,?,?,?,?,?)';
+						var param = [result[0].id,data[0],result[0].name,result[0].price,data[2],result[0].img];
+						connection.query(addVip, param,function (err, result) {
+						      if(err){
+						        console.log('[INSERT ERROR] - ',err.message);
+						      }else{
+						      	console.log('--------------------------insert----------------------------');
+								console.log(result);
+						      	console.log('------------------------------------------------------------\n\n');  
+						      }
+						    res.writeHead(200, {
+							    "Content-Type": "text/plain;charset=utf-8",
+							    // res.writeHead(200, {"Content-Type": "application/json",
+							    "Access-Control-Allow-Origin":"*",
+							    "Access-Control-Allow-Methods": "GET, POST"
+					        });
+							res.end('1');
+						 
+						});
+					}
+				});
+	        }else{
+		      	console.log('--------------------------select----------------------------');
+		      	console.log(result);
+		      	console.log('------------------------------------------------------------\n\n');  
+		        res.writeHead(200, {
+		            "Content-Type": "text/plain",
+		            // res.writeHead(200, {"Content-Type": "application/json",
+		            "Access-Control-Allow-Origin":"*",
+		            "Access-Control-Allow-Methods": "GET, POST"
 		        });
-				res.end('1');
-			 
-			});
-		}
-	});
+				var addVip = 'update carlist set num='+(new Number(result[0].num)+new Number(data[2]))+' where username='+data[0]+' and id='+data[1];
+				var param = [result[0].id,data[0],result[0].name,result[0].price,data[2],result[0].img];
+				connection.query(addVip, param,function (err, result) {
+				      if(err){
+				        console.log('[INSERT ERROR] - ',err.message);
+				      }else{
+				      	console.log('--------------------------insert----------------------------');
+						console.log(result);
+				      	console.log('------------------------------------------------------------\n\n');  
+				      }
+				    res.writeHead(200, {
+					    "Content-Type": "text/plain;charset=utf-8",
+					    // res.writeHead(200, {"Content-Type": "application/json",
+					    "Access-Control-Allow-Origin":"*",
+					    "Access-Control-Allow-Methods": "GET, POST"
+			        });
+					res.end('1');
+				 
+				});
+			}
+	    });
 }).listen(8087,"127.0.0.1");
 
 //删除购物车
@@ -289,9 +323,6 @@ http.createServer(function(req,res){
         });
 		res.end("1");
 	  }
-	});
-	connection.end(function(){
-		
 	});
 }).listen(8088,"127.0.0.1");
 
