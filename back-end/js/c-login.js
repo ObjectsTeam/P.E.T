@@ -32,7 +32,7 @@ var $login = (function(){
 			        if(xhr.status == 200){
 			            var message = xhr.responseText;
 			            var data = JSON.parse(message);
-			            console.log(data);
+//			            console.log(data);
 			            function validate(){
 			            	for(var i=0;i<data.length;i++){
 								if(data[i].username == $('#username').val()){

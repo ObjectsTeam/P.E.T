@@ -19,7 +19,11 @@ import { ToastController } from 'ionic-angular';
 export class Shop1Page {
   goodlist=['1','2'];
   id
-  constructor(public navCtrl: NavController, public navParams: NavParams,public toastCtrl: ToastController,public modalCtel:ModalController,public viewCtrl:ViewController) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public toastCtrl: ToastController,
+    public modalCtel:ModalController,
+    public viewCtrl:ViewController) {
     this.id=this.navParams.get('id');
     console.log(this.id)
   }
@@ -85,5 +89,9 @@ export class Shop1Page {
     xhr.open("post","http://127.0.0.1:8086?",true);//使用POST方法
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");//POST需增加
     xhr.send();
+  }
+
+  back(){
+    this.viewCtrl.dismiss();
   }
 }
