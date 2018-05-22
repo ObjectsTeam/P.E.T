@@ -49,7 +49,7 @@ http.createServer(function(req,res){
 				  port: '3306',                   
 				  database: 'front', 
 				});
-				var addVip = 'insert into userlist(username,passworld) values(?,?)';
+				var addVip = 'insert into userlist(username,password) values(?,?)';
 				var param = [data[0],data[1]];
 				connection.query(addVip, param,function (err, result) {
 				      if(err){
