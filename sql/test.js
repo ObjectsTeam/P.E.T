@@ -365,4 +365,43 @@ http.createServer(function(req,res){
 		
 }).listen(8089,"127.0.0.1");
 
+//查询表
+http.createServer(function(req,res){
+	var data = req.url.slice(2);
+	console.log(data);
+	//创建sql服务
+	var connection = mysql.createConnection({     
+	  host     : 'localhost',       
+	  user     : 'root',              
+	  password : '123456lmz',       
+	  port: '3306',                   
+	  database: 'front', 
+	}); 
+	connection.connect(function(err){
+		if(err){
+			console.log("连接数据库失败");
+		}else{
+			console.log("连接数据库成功");
+		}
+	});
+	var selectVip = 'SELECT * FROM '+data
+	connection.query(selectVip,function (err, result) {
+        if(err){
+          console.log('[SELECT ERROR] - ',err.message);
+        }else{
+	      	console.log('--------------------------select----------------------------');
+	      	console.log(result);
+	      	console.log('------------------------------------------------------------\n\n');  
+	        res.writeHead(200, {
+	            "Content-Type": "text/plain",
+	            // res.writeHead(200, {"Content-Type": "application/json",
+	            "Access-Control-Allow-Origin":"*",
+	            "Access-Control-Allow-Methods": "GET, POST"
+	        });
+    		res.end(JSON.stringify(result));
+        }
+	});
+		
+}).listen(8091,"127.0.0.1");
+
 console.log('start serve!');
