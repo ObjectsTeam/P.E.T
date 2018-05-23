@@ -15,13 +15,16 @@ var $peopleListPanel = (function() {
 	  app.peoplelist.forEach(function(m){
 	  	$('#table').append(''
 	  		+'<tr>'
-	  		+'<td>'+m.userid+'</td>'
-	  		+'<td>'+m.usersex+'</td>'
-	  		+'<td>'+m.username+'</td>'
-	  		+'<td>'+m.species+'</td>'
-	  		+'<td>'+m.years+'</td>'
-	  		+'<td>'+m.sex+'</td>'
-	  		+'<td><button>删除</button></td>'
+	  		+'<td><input type="text" value='+m.userid+'></td>'
+	  		+'<td><input type="text" value='+m.usersex+'></td>'
+	  		+'<td><input type="text" value='+m.username+'></td>'
+	  		+'<td><input type="text" value='+m.species+'></td>'
+	  		+'<td><input type="text" value='+m.years+'></td>'
+	  		+'<td><input type="text" value='+m.sex+'></td>'
+	  		+'<td>'
+	  		+'<button>更新</button>'
+	  		+'<button>删除</button>'
+	  		+'</td>'
 	  		+'</tr>');
 	  });
 	  $('#addBtn').click(function(){
@@ -32,14 +35,18 @@ var $peopleListPanel = (function() {
 	  		+'<td><input type="text" /></td>'
 	  		+'<td><input type="text" /></td>'
 	  		+'<td><input type="text" /></td>'
-	  		+'<td><input type="text" id="lasttd"/></td>'
-	  		+'<td><button>删除</button></td>'
+	  		+'<td><input type="text" /></td>'
+	  		+'<td>'
+	  		+'<button>更新</button>'
+	  		+'<button>删除</button>'
+	  		+'</td>'
 	  		+'</tr>');
 	  		var arr=[];
 	  		$('#table').on('blur','input',function(){
 	  			arr.push($(this).val())
 	  		});
-	  		$('#lasttd').blur(function(){
+	  		$('#table').on('click','button:first-child',function(){
+	  			console.log(arr)
 	  			//创建http服务
 					var xhr = new XMLHttpRequest();
 					xhr.onreadystatechange = function () {
@@ -51,14 +58,15 @@ var $peopleListPanel = (function() {
 					        }
 					    }
 					};
-					xhr.open("get","http://127.0.0.1:8079?"+arr[0]+','+arr[1]+','+arr[2]+','+arr[3]+','+arr[4]+','+arr[5],true);//使用POST方法
+					xhr.open("get","http://127.0.0.1:8079?"+arr[0]+','+arr[1]+','+arr[2]+','+arr[3]+','+arr[4]+','+arr[5]+','+localStorage.getItem('panel'),true);//使用POST方法
 	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 	        xhr.send();
 	  		})
-		})
-	  $('#table').on('click','button',function(){
+		});
+	  
+	  $('#table').on('click','button:last-child',function(){
 	  	$(this).parents('tr').remove();
-				var id = $(this).parents('tr').find("td")[0].innerText;
+				var id = $(this).parents('tr').find("td").find('input')[0].value;
 				console.log(id)
 				//创建http服务
 				var xhr = new XMLHttpRequest();
