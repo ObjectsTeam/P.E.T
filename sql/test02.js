@@ -9,13 +9,13 @@ http.createServer(function(req,res){
 	console.log(data);
 	//创建sql服务
 	var connection = mysql.createConnection({     
-	  host     : 'localhost',       
-	  user     : 'root',              
-	  password : '123456lmz',       
-	  port: '3306',                   
-	  database: 'pet', 
+	  host     : 'localhost',
+	  user     : 'root',
+	  password : '123456lmz',
+	  port: '3306',
+	  database: 'pet',
 	});
-	var addVip = 'insert into peoplelist(userid,usersex,username,species,years,sex) values(?,?,?,?,?,?)';
+	var addVip = 'insert into '+data[6]+'(userid,usersex,username,species,years,sex) values(?,?,?,?,?,?)';
 	var param = [data[0],data[1],data[2],data[3],data[4],data[5]];
 	connection.query(addVip,param,function (err, result) {
         if(err){
