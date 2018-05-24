@@ -27,6 +27,7 @@ var $peopleListPanel = (function() {
 	  		+'</td>'
 	  		+'</tr>');
 	  });
+	  var arr=[];
 	  $('#addBtn').click(function(){
 			$('#table').append(''
 	  		+'<tr>'
@@ -41,29 +42,32 @@ var $peopleListPanel = (function() {
 	  		+'<button>删除</button>'
 	  		+'</td>'
 	  		+'</tr>');
-	  		var arr=[];
 	  		$('#table').on('blur','input',function(){
 	  			arr.push($(this).val())
 	  		});
-	  		$('#table').on('click','button:first-child',function(){
-	  			console.log(arr)
-	  			console.log($(this).parents('tr'))
-	  			//创建http服务
-					var xhr = new XMLHttpRequest();
-					xhr.onreadystatechange = function () {
-						//console.log(xhr.readyState,xhr.status);
-					    if (xhr.readyState == 4) {
-					        //表示服务器的相应代码是200；正确返回了数据
-					        if(xhr.status == 200){
-					        	
-					        }
-					    }
-					};
-					xhr.open("get","http://127.0.0.1:8079?"+arr[0]+','+arr[1]+','+arr[2]+','+arr[3]+','+arr[4]+','+arr[5]+','+localStorage.getItem('panel'),true);//使用POST方法
-	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
-	        xhr.send();
-	  		})
 		});
+		$('#table').on('click','button:first-child',function(){
+//			console.log($(this).parents('tr').find('td')[0].value)
+//			var leng = $(this).parents('tr').find('td');
+//			for(var i=0;i<leng.length-1;i++){
+//				arr.push(leng[i].value)
+//			}
+//			console.log(arr)
+			//创建http服务
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function () {
+					//console.log(xhr.readyState,xhr.status);
+				    if (xhr.readyState == 4) {
+				        //表示服务器的相应代码是200；正确返回了数据
+				        if(xhr.status == 200){
+				        	
+				        }
+				    }
+				};
+				xhr.open("get","http://127.0.0.1:8079?"+arr[0]+','+arr[1]+','+arr[2]+','+arr[3]+','+arr[4]+','+arr[5]+','+localStorage.getItem('panel'),true);//使用POST方法
+	    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
+	    xhr.send();
+		})
 	  
 	  $('#table').on('click','button:last-child',function(){
 	  	$(this).parents('tr').remove();
