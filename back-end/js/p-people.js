@@ -47,6 +47,7 @@ var $peopleListPanel = (function() {
 	  		});
 	  		$('#table').on('click','button:first-child',function(){
 	  			console.log(arr)
+	  			console.log($(this).parents('tr'))
 	  			//创建http服务
 					var xhr = new XMLHttpRequest();
 					xhr.onreadystatechange = function () {
