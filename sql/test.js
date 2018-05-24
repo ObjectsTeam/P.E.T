@@ -133,10 +133,10 @@ http.createServer(function(req,res){
 		}
 	});
 	var selectVip;
-	if(data.length=1){
+	if(data.length==1){
 		selectVip = 'SELECT * FROM '+data[0];
 	}else{
-		selectVip = 'SELECT * FROM '+data[0]+'where username='+data[1];
+		selectVip = 'SELECT * FROM '+data[0]+' where username='+data[1];
 	}
 	connection.query(selectVip,function (err, result) {
         if(err){
@@ -384,10 +384,11 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	if(data.length=1){
-		var selectVip = 'SELECT * FROM '+data[0];
+	var selectVip;
+	if(data.length==1){
+		selectVip = 'SELECT * FROM '+data[0];
 	}else{
-		var selectVip = 'SELECT * FROM '+data[0]+' where id='+data[1];
+		selectVip = 'SELECT * FROM '+data[0]+' where id='+data[1];
 	}
 	connection.query(selectVip,function (err, result) {
         if(err){
@@ -395,6 +396,7 @@ http.createServer(function(req,res){
         }else{
 	      	console.log('--------------------------select----------------------------');
 	      	console.log(result);
+	      	console.log(selectVip);
 	      	console.log('------------------------------------------------------------\n\n');  
 	        res.writeHead(200, {
 	            "Content-Type": "text/plain",
