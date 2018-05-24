@@ -367,7 +367,7 @@ http.createServer(function(req,res){
 
 //查询表
 http.createServer(function(req,res){
-	var data = req.url.slice(2);
+	var data = req.url.slice(2).split(',');
 	console.log(data);
 	//创建sql服务
 	var connection = mysql.createConnection({     
@@ -384,7 +384,11 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var selectVip = 'SELECT * FROM '+data
+	if(data.length=1){
+		var selectVip = 'SELECT * FROM '+data[0];
+	}else{
+		var selectVip = 'SELECT * FROM '+data[0]+' where id='+data[1];
+	}
 	connection.query(selectVip,function (err, result) {
         if(err){
           console.log('[SELECT ERROR] - ',err.message);
