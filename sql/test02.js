@@ -1,12 +1,14 @@
 var http = require("http");
+var querystring = require('querystring');
 var url = require("url");
 var mysql  = require('mysql'); 
 var result;
 
 //添加数据
 http.createServer(function(req,res){
-	var data = req.url.slice(2).split(",");
+	var data = querystring.parse(req.url.slice(2), null, null);
 	console.log(data);
+	
 	//创建sql服务
 	var connection = mysql.createConnection({     
 	  host     : 'localhost',
@@ -15,8 +17,8 @@ http.createServer(function(req,res){
 	  port: '3306',
 	  database: 'pet',
 	});
-	var addVip = 'insert into '+data[6]+'(userid,usersex,username,species,years,sex) values(?,?,?,?,?,?)';
-	var param = [data[0],data[1],data[2],data[3],data[4],data[5]];
+	var addVip = 'insert into '+data.panel+'(userid,usersex,username,species,years,sex) values(?,?,?,?,?,?)';
+	var param = [data.userid,data.usersex,data.username,data.species,data.years,data.sex];
 	connection.query(addVip,param,function (err, result) {
         if(err){
           console.log('[INSERT ERROR] - ',err.message);
@@ -24,7 +26,14 @@ http.createServer(function(req,res){
 	      	console.log('--------------------------insert----------------------------');
 	      	console.log(result);
 	      	console.log('------------------------------------------------------------\n\n');  
-	    }
+	    	res.writeHead(200, {
+	            "Content-Type": "text/plain;charset=utf-8",
+	            // res.writeHead(200, {"Content-Type": "application/json",
+	            "Access-Control-Allow-Origin":"*",
+	            "Access-Control-Allow-Methods": "GET, POST"
+	        });
+    		res.end('1');
+        }
 	});
 }).listen(8079,"127.0.0.1");   
 
@@ -206,7 +215,7 @@ http.createServer(function(req,res){
 	      	console.log(result);
 	      	console.log('------------------------------------------------------------\n\n');  
 	        res.writeHead(200, {
-	            "Content-Type": "text/plain",
+	            "Content-Type": "text/plain;charset=utf-8",
 	            // res.writeHead(200, {"Content-Type": "application/json",
 	            "Access-Control-Allow-Origin":"*",
 	            "Access-Control-Allow-Methods": "GET, POST"

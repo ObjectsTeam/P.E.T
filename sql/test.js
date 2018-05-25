@@ -1,5 +1,6 @@
 ﻿var mysql  = require('mysql');  
 var http = require("http");
+var querystring = require('querystring');
 var url = require("url");
 var mysql  = require('mysql'); 
 var data = 'peoplelist';
@@ -396,10 +397,9 @@ http.createServer(function(req,res){
         }else{
 	      	console.log('--------------------------select----------------------------');
 	      	console.log(result);
-	      	console.log(selectVip);
 	      	console.log('------------------------------------------------------------\n\n');  
 	        res.writeHead(200, {
-	            "Content-Type": "text/plain",
+	            "Content-Type": "text/plain;charset:utf-8",
 	            // res.writeHead(200, {"Content-Type": "application/json",
 	            "Access-Control-Allow-Origin":"*",
 	            "Access-Control-Allow-Methods": "GET, POST"
@@ -410,4 +410,52 @@ http.createServer(function(req,res){
 		
 }).listen(8091,"127.0.0.1");
 
+//发布信息
+http.createServer(function(req,res){
+	var data = querystring.parse(req.url.slice(2), null, null);
+	console.log(data);
+	
+	//创建sql服务
+	var connection = mysql.createConnection({     
+	  host     : 'localhost',
+	  user     : 'root',
+	  password : '123456lmz',
+	  port: '3306',
+	  database: 'front',
+	});
+	var selectVip = 'SELECT * FROM petlist'
+	connection.query(selectVip,function (err, result) {
+        if(err){
+        	console.log('[SELECT ERROR] - ',err.message);
+        }else{
+        	console.log('--------------------------select----------------------------');
+	      	console.log(result.length);
+	      	console.log('------------------------------------------------------------\n\n');  
+	        res.writeHead(200, {
+	            "Content-Type": "text/plain;charset:utf-8",
+	            // res.writeHead(200, {"Content-Type": "application/json",
+	            "Access-Control-Allow-Origin":"*",
+	            "Access-Control-Allow-Methods": "GET, POST"
+	        });
+			var addVip = 'insert into petlist (id,name,years,sex,img,text,phone) values(?,?,?,?,?,?,?)';
+			var param = [result.length,data.name,data.years,data.sex,data.img,data.text,data.phone];
+			connection.query(addVip,param,function (err, result) {
+		        if(err){
+		          console.log('[INSERT ERROR] - ',err.message);
+		        }else{
+			      	console.log('--------------------------insert----------------------------');
+			      	console.log(result);
+			      	console.log('------------------------------------------------------------\n\n');  
+			    	res.writeHead(200, {
+			            "Content-Type": "text/plain;charset=utf-8",
+			            // res.writeHead(200, {"Content-Type": "application/json",
+			            "Access-Control-Allow-Origin":"*",
+			            "Access-Control-Allow-Methods": "GET, POST"
+			        });
+		    		res.end('1');
+		        }
+			});
+		}
+	});
+}).listen(8092,"127.0.0.1");
 console.log('start serve!');
