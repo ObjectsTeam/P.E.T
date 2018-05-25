@@ -47,24 +47,18 @@ var $peopleListPanel = (function() {
 	  		});
 		});
 		$('#table').on('click','button:first-child',function(){
-//			console.log($(this).parents('tr').find('td')[0].value)
-//			var leng = $(this).parents('tr').find('td');
-//			for(var i=0;i<leng.length-1;i++){
-//				arr.push(leng[i].value)
-//			}
-//			console.log(arr)
 			//创建http服务
-				var xhr = new XMLHttpRequest();
-				xhr.onreadystatechange = function () {
-					//console.log(xhr.readyState,xhr.status);
-				    if (xhr.readyState == 4) {
-				        //表示服务器的相应代码是200；正确返回了数据
-				        if(xhr.status == 200){
-				        	
-				        }
-				    }
-				};
-				xhr.open("get","http://127.0.0.1:8079?"+arr[0]+','+arr[1]+','+arr[2]+','+arr[3]+','+arr[4]+','+arr[5]+','+localStorage.getItem('panel'),true);//使用POST方法
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function () {
+				//console.log(xhr.readyState,xhr.status);
+			    if (xhr.readyState == 4) {
+			        //表示服务器的相应代码是200；正确返回了数据
+			        if(xhr.status == 200){
+			        	
+			        }
+			    }
+			};
+			xhr.open("post","http://127.0.0.1:8079?userid="+arr[0]+'&usersex='+arr[1]+'&username='+arr[2]+'&species='+arr[3]+'&years='+arr[4]+'&sex='+arr[5]+'&panel='+localStorage.getItem('panel'),true);//使用POST方法
 	    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 	    xhr.send();
 		})
@@ -84,7 +78,7 @@ var $peopleListPanel = (function() {
 				        }
 				    }
 				};
-				xhr.open("get","http://127.0.0.1:8081?"+localStorage.getItem("panel")+"-"+"userid="+id,true);//使用POST方法
+				xhr.open("post","http://127.0.0.1:8081?"+localStorage.getItem("panel")+"-"+"userid="+id,true);//使用POST方法
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
         xhr.send();
 	  });
