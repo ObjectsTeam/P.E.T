@@ -201,7 +201,6 @@ http.createServer(function(req,res){
 http.createServer(function(req,res){
 	data = req.url.slice(2).split(',');
 	console.log(data);
-	console.log(typeof(data));
 	//创建sql服务
 	var connection = mysql.createConnection({     
 	  host     : 'localhost',       
@@ -217,10 +216,10 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var seletcar='SELECT * FROM carlist where username='+data[0]+' and id='+data[1];
+	var seletcar='SELECT * FROM carlist where username='+data[0]+' and name='+data[2];
 		connection.query(seletcar,function (err, result) {
 	        if(result == ""){
-	            var selectVip = 'SELECT * FROM classlist where id='+data[1]
+	            var selectVip = 'SELECT * FROM '+data[3]+'list where id='+data[1]
 				connection.query(selectVip,function (err, result) {
 			        if(err){
 			          console.log('[SELECT ERROR] - ',err.message);
@@ -290,7 +289,7 @@ http.createServer(function(req,res){
 
 //删除购物车
 http.createServer(function(req,res){
-	var data = req.url.slice(2).split(",");
+	var data = querystring.parse(req.url.slice(2), null, null);
 	console.log(data);
 	//创建sql服务
 	var connection = mysql.createConnection({     
@@ -307,7 +306,7 @@ http.createServer(function(req,res){
 			console.log("连接数据库成功");
 		}
 	});
-	var deleteVip = 'delete from carlist where username='+data[0]+' and id='+data[1];
+	var deleteVip = 'delete from carlist where username="'+data.username+'" and id='+data.id+' and name="'+data.name+'"';
 	connection.query(deleteVip, function(error, result){
 	  if(error)
 	  {
@@ -414,7 +413,6 @@ http.createServer(function(req,res){
 http.createServer(function(req,res){
 	var data = querystring.parse(req.url.slice(2), null, null);
 	console.log(data);
-	
 	//创建sql服务
 	var connection = mysql.createConnection({     
 	  host     : 'localhost',
@@ -458,4 +456,122 @@ http.createServer(function(req,res){
 		}
 	});
 }).listen(8092,"127.0.0.1");
+
+//更改资料
+http.createServer(function(req,res){
+	var data = querystring.parse(req.url.slice(2), null, null);
+	var arr = Object.keys(data);
+	console.log(data);
+	console.log(arr);
+	//创建sql服务
+	var connection = mysql.createConnection({     
+	  host     : 'localhost',
+	  user     : 'root',
+	  password : '123456lmz',
+	  port: '3306',
+	  database: 'front',
+	});
+	var selectVip = 'SELECT * FROM melist where user='+data.user
+	connection.query(selectVip,function (err, result) {
+        if(err){
+        	console.log('[SELECT ERROR] - ',err.message);
+        }else{
+        	console.log('--------------------------select----------------------------');
+	      	console.log(result.length);
+	      	console.log('------------------------------------------------------------\n\n');  
+	        res.writeHead(200, {
+	            "Content-Type": "text/plain;charset:utf-8",
+	            // res.writeHead(200, {"Content-Type": "application/json",
+	            "Access-Control-Allow-Origin":"*",
+	            "Access-Control-Allow-Methods": "GET, POST"
+	        });
+	        var updateVip;
+	        var	param;
+	        if(result.length==0){
+	        	updateVip = 'insert into melist (id,user,username,me,sex,birthDay,zhiye,school,city,home,email,text) values(?,?,?,?,?,?,?,?,?,?,?,?)';
+	        	param = [result.length,data.user,data.username,data.me,data.sex,data.birthDay,data.zhiye,data.school,data.city,data.home,data.email,data.text];
+	        	connection.query(updateVip,param,function (err, result) {
+			        if(err){
+			          console.log('[INSERT ERROR] - ',err.message);
+			        }else{
+				      	console.log('--------------------------insert----------------------------');
+				      	console.log(result);
+				      	console.log('------------------------------------------------------------\n\n');  
+				    	res.writeHead(200, {
+				            "Content-Type": "text/plain;charset=utf-8",
+				            // res.writeHead(200, {"Content-Type": "application/json",
+				            "Access-Control-Allow-Origin":"*",
+				            "Access-Control-Allow-Methods": "GET, POST"
+				        });
+			    		res.end('1');
+			        }
+				});
+	        }else{
+		        for(var i=0;i<arr.length;i++){
+		        	if(data[arr[i]] !== 'undefined'){
+		        		console.log(arr[i]);
+		        		console.log(data[arr[i]]);
+						updateVip = 'update melist set '+arr[i]+'="'+data[arr[i]]+'" where id=0'
+						connection.query(updateVip,function (err, result) {
+					        if(err){
+					          console.log('[UPDATE ERROR] - ',err.message);
+					        }else{
+					        	console.log(updateVip)
+						      	console.log('--------------------------update----------------------------');
+						      	console.log(result);
+						      	console.log('------------------------------------------------------------\n\n');  
+						    	res.writeHead(200, {
+						            "Content-Type": "text/plain;charset=utf-8",
+						            // res.writeHead(200, {"Content-Type": "application/json",
+						            "Access-Control-Allow-Origin":"*",
+						            "Access-Control-Allow-Methods": "GET, POST"
+						        });
+					    		res.end('1');
+					        }
+						});
+		        	}
+		        }
+		    }
+		}
+	});
+}).listen(8093,"127.0.0.1");
+
+//查询表
+http.createServer(function(req,res){
+	var data = req.url.slice(2).split(',');
+	console.log(data);
+	//创建sql服务
+	var connection = mysql.createConnection({     
+	  host     : 'localhost',       
+	  user     : 'root',              
+	  password : '123456lmz',       
+	  port: '3306',                   
+	  database: 'front', 
+	}); 
+	connection.connect(function(err){
+		if(err){
+			console.log("连接数据库失败");
+		}else{
+			console.log("连接数据库成功");
+		}
+	});
+	var selectVip = 'SELECT * FROM melist where user='+data[0];
+	connection.query(selectVip,function (err, result) {
+        if(err){
+          console.log('[SELECT ERROR] - ',err.message);
+        }else{
+	      	console.log('--------------------------select----------------------------');
+	      	console.log(result);
+	      	console.log('------------------------------------------------------------\n\n');  
+	        res.writeHead(200, {
+	            "Content-Type": "text/plain;charset:utf-8",
+	            // res.writeHead(200, {"Content-Type": "application/json",
+	            "Access-Control-Allow-Origin":"*",
+	            "Access-Control-Allow-Methods": "GET, POST"
+	        });
+    		res.end(JSON.stringify(result));
+        }
+	});
+		
+}).listen(8094,"127.0.0.1");
 console.log('start serve!');
