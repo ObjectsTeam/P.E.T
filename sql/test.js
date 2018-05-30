@@ -509,8 +509,6 @@ http.createServer(function(req,res){
 	        }else{
 		        for(var i=0;i<arr.length;i++){
 		        	if(data[arr[i]] !== 'undefined'){
-		        		console.log(arr[i]);
-		        		console.log(data[arr[i]]);
 						updateVip = 'update melist set '+arr[i]+'="'+data[arr[i]]+'" where id=0'
 						connection.query(updateVip,function (err, result) {
 					        if(err){
