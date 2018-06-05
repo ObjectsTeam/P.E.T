@@ -78,7 +78,6 @@ var $menu = (function(){
 		$menuItem.click(function(e){
 			var $menuItem = $(e.currentTarget).find('p').attr('data-href');
 			var panel = getPanel($menuItem);
-			console.log(panel);
 			if(panel.indexOf("list")>0){
 				//创建http服务
 				var obj = {

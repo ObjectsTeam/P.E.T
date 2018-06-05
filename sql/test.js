@@ -509,12 +509,11 @@ http.createServer(function(req,res){
 	        }else{
 		        for(var i=0;i<arr.length;i++){
 		        	if(data[arr[i]] !== 'undefined'){
-						updateVip = 'update melist set '+arr[i]+'="'+data[arr[i]]+'" where id=0'
+						updateVip = 'update melist set '+arr[i]+'="'+data[arr[i]]+'" where user= '+data.user;
 						connection.query(updateVip,function (err, result) {
 					        if(err){
 					          console.log('[UPDATE ERROR] - ',err.message);
 					        }else{
-					        	console.log(updateVip)
 						      	console.log('--------------------------update----------------------------');
 						      	console.log(result);
 						      	console.log('------------------------------------------------------------\n\n');  

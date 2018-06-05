@@ -50,7 +50,7 @@ var $login = (function(){
 			            e.preventDefault();
 						if(validate()){
 							//合法性校验
-							localStorage.setItem("username",$('#username').val());
+//							localStorage.setItem("username",$('#username').val());
 							location.hash = '#/index';
 							localStorage.setItem('Logined',true);
 						}

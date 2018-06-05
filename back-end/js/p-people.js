@@ -8,7 +8,7 @@ var $peopleListPanel = (function() {
 	    +'<tr>'
 	    +'</tr>'
 	    +'</table>');
-	  var ThArr = ['用户ID','用户性别','账号','宠物种类','宠物年龄','宠物性别','操作'];
+	  var ThArr = ['用户ID','用户性别','昵称','宠物种类','宠物年龄','宠物性别','操作'];
 	  for(var i=0;i<ThArr.length;i++){
 	  	$('#table tr').append('<th>'+ThArr[i]+'</th>')
 	  };
