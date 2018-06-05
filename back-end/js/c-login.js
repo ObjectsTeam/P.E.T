@@ -13,7 +13,6 @@ var $login = (function(){
 //				+'<input type="text" id="inp-yzm"/>'
 //				+'<br />'
 				+'<input type="submit" value="登 录"/>'
-				+'<input type="button" value="注 册" id="btn"/>'
 			+'</form>'
 		+'</div>';
 	function show(config){
@@ -62,9 +61,6 @@ var $login = (function(){
 	        xhr.send();
 			
 		});
-		$('#btn').click(function(){
-			location.hash = '#/signUp';
-		})
 	}
 	return {show:show}
 })();
