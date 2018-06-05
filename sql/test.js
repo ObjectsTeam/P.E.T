@@ -732,7 +732,7 @@ http.createServer(function(req, res) {
 						"Access-Control-Allow-Methods": "GET, POST"
 					});
 					var insertVip = 'insert into collectlist (id,username,name,price,img,text,num) values(?,?,?,?,?,?,?)';
-					var param = [result.length, result.username, result.name, result.price, result.img, result.text, result.num];
+					var param = [res.length, result.username, result.name, result.price, result.img, result.text, result.num];
 					connection.query(updateVip, param, function(err, result) {
 						if(err) {
 							console.log('[INSERT ERROR] - ', err.message);
@@ -771,7 +771,7 @@ http.createServer(function(req, res) {
 			console.log("连接数据库成功");
 		}
 	});
-	var deleteVip = 'delete from collectlist where username="' + data.username + '" and name="' + data.name + '"';
+	var deleteVip = 'delete from collectlist where username="'+data.username+'" and name="'+data.name+'"';
 	connection.query(deleteVip, function(error, result) {
 		if(error) {
 			console.log('[DELETE ERROR] - ', error.message);
