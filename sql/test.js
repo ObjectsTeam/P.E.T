@@ -198,7 +198,7 @@ http.createServer(function(req, res) {
 
 //添加购物车
 http.createServer(function(req, res) {
-	data = req.url.slice(2).split(',');
+	data = querystring.parse(req.url.slice(2),null,null);
 	console.log(data);
 	//创建sql服务
 	var connection = mysql.createConnection({
@@ -215,15 +215,16 @@ http.createServer(function(req, res) {
 			console.log("连接数据库成功");
 		}
 	});
-	var seletcar = 'SELECT * FROM carlist where username=' + data[0] + ' and name=' + data[2];
+	var seletcar = 'SELECT * FROM carlist where username='+data.username+' and name="'+data.name+'"';
 	connection.query(seletcar, function(err, result) {
+		console.log('rel:',result)
 		if(result == "") {
-			var selectVip = 'SELECT * FROM ' + data[3] + 'list where id=' + data[1]
+			var selectVip = 'SELECT * FROM '+data.list+'list where id='+data.id
 			connection.query(selectVip, function(err, result) {
 				if(err) {
 					console.log('[SELECT ERROR] - ', err.message);
 				} else {
-					console.log('--------------------------select----------------------------');
+					console.log('--------------------------select1----------------------------');
 					console.log(result);
 					console.log('------------------------------------------------------------\n\n');
 					res.writeHead(200, {
@@ -233,7 +234,7 @@ http.createServer(function(req, res) {
 						"Access-Control-Allow-Methods": "GET, POST"
 					});
 					var addVip = 'insert into carlist(id,username,name,price,num,img) values(?,?,?,?,?,?)';
-					var param = [result[0].id, data[0], result[0].name, result[0].price, data[2], result[0].img];
+					var param = [result[0].id, data.username, result[0].name, result[0].price, data.num, result[0].img];
 					connection.query(addVip, param, function(err, result) {
 						if(err) {
 							console.log('[INSERT ERROR] - ', err.message);
@@ -254,7 +255,7 @@ http.createServer(function(req, res) {
 				}
 			});
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select2----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -263,13 +264,13 @@ http.createServer(function(req, res) {
 				"Access-Control-Allow-Origin": "*",
 				"Access-Control-Allow-Methods": "GET, POST"
 			});
-			var addVip = 'update carlist set num=' + (new Number(result[0].num) + new Number(data[2])) + ' where username=' + data[0] + ' and id=' + data[1];
+			var addVip = 'update carlist set num=' + (new Number(result[0].num) + new Number(data.num)) + ' where username=' + data.username + ' and name="'+data.name+'"';
 			var param = [result[0].id, data[0], result[0].name, result[0].price, data[2], result[0].img];
-			connection.query(addVip, param, function(err, result) {
+			connection.query(addVip, function(err, result) {
 				if(err) {
 					console.log('[INSERT ERROR] - ', err.message);
 				} else {
-					console.log('--------------------------insert----------------------------');
+					console.log('--------------------------update----------------------------');
 					console.log(result);
 					console.log('------------------------------------------------------------\n\n');
 				}
@@ -588,6 +589,7 @@ http.createServer(function(req, res) {
 		} else {
 			console.log('--------------------------select----------------------------');
 			console.log(result);
+			console.log(selectVip)
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
 				"Content-Type": "text/plain;charset:utf-8",
