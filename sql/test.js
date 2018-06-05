@@ -571,4 +571,81 @@ http.createServer(function(req,res){
 	});
 		
 }).listen(8094,"127.0.0.1");
+
+//管理收货地址
+http.createServer(function(req,res){
+	var data = querystring.parse(req.url.slice(2), null, null);
+	var arr = Object.keys(data);
+	console.log(data);
+	console.log(arr);
+	//创建sql服务
+	var connection = mysql.createConnection({     
+	  host     : 'localhost',
+	  user     : 'root',
+	  password : '123456lmz',
+	  port: '3306',
+	  database: 'front',
+	});
+	var selectVip = 'SELECT * FROM addresslist where username='+data.username
+	connection.query(selectVip,function (err, result) {
+        if(err){
+        	console.log('[SELECT ERROR] - ',err.message);
+        }else{
+        	console.log('--------------------------select----------------------------');
+	      	console.log(result.length);
+	      	console.log('------------------------------------------------------------\n\n');  
+	        res.writeHead(200, {
+	            "Content-Type": "text/plain;charset:utf-8",
+	            // res.writeHead(200, {"Content-Type": "application/json",
+	            "Access-Control-Allow-Origin":"*",
+	            "Access-Control-Allow-Methods": "GET, POST"
+	        });
+	        var updateVip;
+	        var	param;
+	        if(result.length==0){
+	        	updateVip = 'insert into addresslist (id,username,address,phone,name) values(?,?,?,?,?)';
+	        	param = [result.length,data.username,data.address,data.phone,data.name];
+	        	connection.query(updateVip,param,function (err, result) {
+			        if(err){
+			          console.log('[INSERT ERROR] - ',err.message);
+			        }else{
+				      	console.log('--------------------------insert----------------------------');
+				      	console.log(result);
+				      	console.log('------------------------------------------------------------\n\n');  
+				    	res.writeHead(200, {
+				            "Content-Type": "text/plain;charset=utf-8",
+				            // res.writeHead(200, {"Content-Type": "application/json",
+				            "Access-Control-Allow-Origin":"*",
+				            "Access-Control-Allow-Methods": "GET, POST"
+				        });
+			    		res.end('1');
+			        }
+				});
+	        }else{
+		        for(var i=0;i<arr.length;i++){
+		        	if(data[arr[i]] !== 'undefined'){
+						updateVip = 'update addresslist set '+arr[i]+'="'+data[arr[i]]+'" where username= '+data.username;
+						connection.query(updateVip,function (err, result) {
+					        if(err){
+					          console.log('[UPDATE ERROR] - ',err.message);
+					        }else{
+						      	console.log('--------------------------update----------------------------');
+						      	console.log(result);
+						      	console.log('------------------------------------------------------------\n\n');  
+						    	res.writeHead(200, {
+						            "Content-Type": "text/plain;charset=utf-8",
+						            // res.writeHead(200, {"Content-Type": "application/json",
+						            "Access-Control-Allow-Origin":"*",
+						            "Access-Control-Allow-Methods": "GET, POST"
+						        });
+					    		res.end('1');
+					        }
+						});
+		        	}
+		        }
+		    }
+		}
+	});
+}).listen(8095,"127.0.0.1");  
+
 console.log('start serve!');
