@@ -687,7 +687,7 @@ http.createServer(function(req, res) {
 		port: '3306',
 		database: 'front',
 	});
-	var selectVip = 'SELECT * FROM ' + data.list + 'list where name=' + data.name
+	var selectVip = 'SELECT * FROM ' + data.list + 'list where name="' + data.name+'"';
 	connection.query(selectVip, function(err, result) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
@@ -701,7 +701,7 @@ http.createServer(function(req, res) {
 				"Access-Control-Allow-Origin": "*",
 				"Access-Control-Allow-Methods": "GET, POST"
 			});
-			connection.query("SELECT * FROM collectlist where username=" + data.username, function(err, res) {
+			connection.query("SELECT * FROM collectlist where username='" + data.username+"'", function(err, res) {
 				if(err) {
 					console.log('[SELECT ERROR] - ', err.message);
 				} else {
@@ -715,7 +715,7 @@ http.createServer(function(req, res) {
 						"Access-Control-Allow-Methods": "GET, POST"
 					});
 					var insertVip = 'insert into collectlist (id,username,name,price,img,text,num) values(?,?,?,?,?,?,?)';
-					var param = [res.length, result.username, result.name, result.price, result.img, result.text, result.num];
+					var param = [res.length, data.username, result.name, result.price, result.img, result.text, result.num];
 					connection.query(insertVip, param, function(err, result) {
 						if(err) {
 							console.log('[INSERT ERROR] - ', err.message);
