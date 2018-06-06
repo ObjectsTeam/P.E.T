@@ -265,7 +265,6 @@ http.createServer(function(req, res) {
 				"Access-Control-Allow-Methods": "GET, POST"
 			});
 			var addVip = 'update carlist set num=' + (new Number(result[0].num) + new Number(data.num)) + ' where username=' + data.username + ' and name="'+data.name+'"';
-			var param = [result[0].id, data[0], result[0].name, result[0].price, data[2], result[0].img];
 			connection.query(addVip, function(err, result) {
 				if(err) {
 					console.log('[INSERT ERROR] - ', err.message);
@@ -616,41 +615,25 @@ http.createServer(function(req, res) {
 		port: '3306',
 		database: 'front',
 	});
-	var selectVip = 'SELECT * FROM addresslist where username=' + data.username
-	connection.query(selectVip, function(err, result) {
+	var insertVip = 'insert into addresslist (id,username,address,phone,name) values(?,?,?,?,?)';
+	var param = [0, data.username, data.address, data.phone, data.name];
+	connection.query(updateVip, param, function(err, result) {
 		if(err) {
-			console.log('[SELECT ERROR] - ', err.message);
+			console.log('[INSERT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
-			console.log(result.length);
+			console.log('--------------------------insert----------------------------');
+			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
-				"Content-Type": "text/plain;charset:utf-8",
+				"Content-Type": "text/plain;charset=utf-8",
 				// res.writeHead(200, {"Content-Type": "application/json",
 				"Access-Control-Allow-Origin": "*",
 				"Access-Control-Allow-Methods": "GET, POST"
 			});
-			var insertVip = 'insert into addresslist (id,username,address,phone,name) values(?,?,?,?,?)';
-			var param = [result.length, data.username, data.address, data.phone, data.name];
-			connection.query(updateVip, param, function(err, result) {
-				if(err) {
-					console.log('[INSERT ERROR] - ', err.message);
-				} else {
-					console.log('--------------------------insert----------------------------');
-					console.log(result);
-					console.log('------------------------------------------------------------\n\n');
-					res.writeHead(200, {
-						"Content-Type": "text/plain;charset=utf-8",
-						// res.writeHead(200, {"Content-Type": "application/json",
-						"Access-Control-Allow-Origin": "*",
-						"Access-Control-Allow-Methods": "GET, POST"
-					});
-					res.end('1');
-				}
-			});
-
+			res.end('1');
 		}
 	});
+
 }).listen(8095, "127.0.0.1");
 
 //管理收货地址
