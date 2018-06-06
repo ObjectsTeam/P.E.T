@@ -716,7 +716,7 @@ http.createServer(function(req, res) {
 					});
 					var insertVip = 'insert into collectlist (id,username,name,price,img,text,num) values(?,?,?,?,?,?,?)';
 					var param = [res.length, result.username, result.name, result.price, result.img, result.text, result.num];
-					connection.query(updateVip, param, function(err, result) {
+					connection.query(insertVip, param, function(err, result) {
 						if(err) {
 							console.log('[INSERT ERROR] - ', err.message);
 						} else {
