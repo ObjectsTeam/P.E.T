@@ -637,7 +637,7 @@ http.createServer(function(req, res) {
 
 }).listen(8095, "127.0.0.1");
 
-//管理收货地址
+//更新收货地址
 http.createServer(function(req, res) {
 	var data = querystring.parse(req.url.slice(2), null, null);
 	var arr = Object.keys(data);
@@ -653,7 +653,7 @@ http.createServer(function(req, res) {
 	});
 	for(var i = 0; i < arr.length; i++) {
 		if(data[arr[i]] !== 'undefined') {
-			updateVip = 'update addresslist set ' + arr[i] + '="' + data[arr[i]] + '" where username= ' + data.username;
+			var updateVip = 'update addresslist set ' + arr[i] + '="' + data[arr[i]] + '" where username= ' + data.username;
 			connection.query(updateVip, function(err, result) {
 				if(err) {
 					console.log('[UPDATE ERROR] - ', err.message);
@@ -673,6 +673,8 @@ http.createServer(function(req, res) {
 		}
 	}
 }).listen(8096, "127.0.0.1");
+
+//删除收货地址
 
 //添加收藏
 http.createServer(function(req, res) {
@@ -715,21 +717,39 @@ http.createServer(function(req, res) {
 						"Access-Control-Allow-Origin": "*",
 						"Access-Control-Allow-Methods": "GET, POST"
 					});
-					var insertVip = 'insert into collectlist (id,username,name,price,img,text,num) values(?,?,?,?,?,?,?)';
-					var param = [resul.length, data.username, result[0].name, result[0].price, result[0].img, result[0].text, result[0].num];
-					connection.query(insertVip, param, function(err, result) {
-						if(err) {
-							console.log('[INSERT ERROR] - ', err.message);
-						} else {
+					var exit;
+					for(var i=0;i<resul.length;i++){
+						if(resul[i].name == result[0].name){
+							exit = true;
 							res.writeHead(200, {
 								"Content-Type": "text/plain;charset=utf-8",
 								// res.writeHead(200, {"Content-Type": "application/json",
 								"Access-Control-Allow-Origin": "*",
 								"Access-Control-Allow-Methods": "GET, POST"
 							});
-							res.end('1');
+							res.end('0');
+							break;
+						}else{
+							exit=false;
 						}
-					});
+					}
+					if(!exit){
+						var insertVip = 'insert into collectlist (id,username,name,price,img,text,num) values(?,?,?,?,?,?,?)';
+						var param = [resul.length, data.username, result[0].name, result[0].price, result[0].img, result[0].text, result[0].num];
+						connection.query(insertVip, param, function(err, result) {
+							if(err) {
+								console.log('[INSERT ERROR] - ', err.message);
+							} else {
+								res.writeHead(200, {
+									"Content-Type": "text/plain;charset=utf-8",
+									// res.writeHead(200, {"Content-Type": "application/json",
+									"Access-Control-Allow-Origin": "*",
+									"Access-Control-Allow-Methods": "GET, POST"
+								});
+								res.end('1');
+							}
+						});
+					}
 				}
 			});
 		}
