@@ -614,27 +614,41 @@ http.createServer(function(req, res) {
 		port: '3306',
 		database: 'front',
 	});
-	var insertVip = 'insert into addresslist (id,username,address,phone,name) values(?,?,?,?,?)';
-	var param = ['0', data['username'], data['address'], data['phone'], data['name']];
-	connection.query(insertVip, param, function(err, result) {
+	connection.query("SELECT * FROM addresslist where username='" + data.username+"'", function(err, resul) {
 		if(err) {
-			console.log('[INSERT ERROR] - ', err.message);
+			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log(data['username'])
-			console.log(data['address'])
-			console.log('--------------------------insert----------------------------');
-			console.log(result);
+			console.log('--------------------------select1----------------------------');
+			console.log(resul.length);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
-				"Content-Type": "text/plain;charset=utf-8",
+				"Content-Type": "text/plain;charset:utf-8",
 				// res.writeHead(200, {"Content-Type": "application/json",
 				"Access-Control-Allow-Origin": "*",
 				"Access-Control-Allow-Methods": "GET, POST"
 			});
-			res.end('1');
+			var insertVip = 'insert into addresslist (id,username,address,phone,name) values(?,?,?,?,?)';
+			var param = [resul.length, data['username'], data['address'], data['phone'], data['name']];
+			connection.query(insertVip, param, function(err, result) {
+				if(err) {
+					console.log('[INSERT ERROR] - ', err.message);
+				} else {
+					console.log(data['username'])
+					console.log(data['address'])
+					console.log('--------------------------insert----------------------------');
+					console.log(result);
+					console.log('------------------------------------------------------------\n\n');
+					res.writeHead(200, {
+						"Content-Type": "text/plain;charset=utf-8",
+						// res.writeHead(200, {"Content-Type": "application/json",
+						"Access-Control-Allow-Origin": "*",
+						"Access-Control-Allow-Methods": "GET, POST"
+					});
+					res.end('1');
+				}
+			});
 		}
 	});
-
 }).listen(8095, "127.0.0.1");
 
 //更新收货地址
@@ -675,6 +689,38 @@ http.createServer(function(req, res) {
 }).listen(8096, "127.0.0.1");
 
 //删除收货地址
+http.createServer(function(req, res) {
+	var data = querystring.parse(req.url.slice(2), null, null);
+	var arr = Object.keys(data);
+	console.log(data);
+	console.log(arr);
+	//创建sql服务
+	var connection = mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: '123456lmz',
+		port: '3306',
+		database: 'front',
+	});
+	var deleteVip = 'delete from collectlist where username="'+data.username+'" and id='+data.id;
+	connection.query(deleteVip, function(error, result) {
+		if(error) {
+			console.log('[DELETE ERROR] - ', error.message);
+		} else {
+			console.log(deleteVip)
+			console.log('--------------------------delete----------------------------');
+			console.log(result);
+			console.log('------------------------------------------------------------\n\n');
+			res.writeHead(200, {
+				"Content-Type": "text/plain",
+				// res.writeHead(200, {"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Methods": "GET, POST"
+			});
+			res.end("1");
+		}
+	});
+}).listen(8099, "127.0.0.1");
 
 //添加收藏
 http.createServer(function(req, res) {
