@@ -687,7 +687,7 @@ http.createServer(function(req, res) {
 		port: '3306',
 		database: 'front',
 	});
-	var selectVip = 'SELECT * FROM ' + data.list + 'list where id='+data.id';
+	var selectVip = 'SELECT * FROM ' + data.list + 'list where id='+data.id;
 	connection.query(selectVip, function(err, result) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
