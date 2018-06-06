@@ -588,7 +588,6 @@ http.createServer(function(req, res) {
 		} else {
 			console.log('--------------------------select----------------------------');
 			console.log(result);
-			console.log(selectVip)
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
 				"Content-Type": "text/plain;charset:utf-8",
@@ -616,7 +615,7 @@ http.createServer(function(req, res) {
 		database: 'front',
 	});
 	var insertVip = 'insert into addresslist (id,username,address,phone,name) values(?,?,?,?,?)';
-	var param = ['0', data.username, data.address, data.phone, data.name];
+	var param = ['0', data['username'], data['address'], data['phone'], data['name']];
 	connection.query(insertVip, param, function(err, result) {
 		if(err) {
 			console.log('[INSERT ERROR] - ', err.message);
@@ -715,7 +714,7 @@ http.createServer(function(req, res) {
 						"Access-Control-Allow-Methods": "GET, POST"
 					});
 					var insertVip = 'insert into collectlist (id,username,name,price,img,text,num) values(?,?,?,?,?,?,?)';
-					var param = [resul.length, data.username, result.name, result.price, result.img, result.text, result.num];
+					var param = [resul.length, data.username, result[0].name, result[0].price, result[0].img, result[0].text, result[0].num];
 					connection.query(insertVip, param, function(err, result) {
 						if(err) {
 							console.log('[INSERT ERROR] - ', err.message);
@@ -759,6 +758,7 @@ http.createServer(function(req, res) {
 		if(error) {
 			console.log('[DELETE ERROR] - ', error.message);
 		} else {
+			console.log(deleteVip)
 			console.log('--------------------------delete----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
