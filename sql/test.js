@@ -667,7 +667,7 @@ http.createServer(function(req, res) {
 	});
 	for(var i = 0; i < arr.length; i++) {
 		if(data[arr[i]] !== 'undefined') {
-			var updateVip = 'update addresslist set ' + arr[i] + '="' + data[arr[i]] + '" where username= ' + data.username;
+			var updateVip = 'update addresslist set ' + arr[i] + '="' + data[arr[i]] + '" where username= ' + data.username+' and id='+data.id;
 			connection.query(updateVip, function(err, result) {
 				if(err) {
 					console.log('[UPDATE ERROR] - ', err.message);
