@@ -616,7 +616,7 @@ http.createServer(function(req, res) {
 		database: 'front',
 	});
 	var insertVip = 'insert into addresslist (id,username,address,phone,name) values(?,?,?,?,?)';
-	var param = [0, data.username, data.address, data.phone, data.name];
+	var param = ['0', data.username, data.address, data.phone, data.name];
 	connection.query(insertVip, param, function(err, result) {
 		if(err) {
 			console.log('[INSERT ERROR] - ', err.message);
