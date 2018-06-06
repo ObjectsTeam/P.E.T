@@ -55,7 +55,7 @@ var $playList2Panel = (function() {
 					        }
 					    }
 					};
-					xhr.open("get","http://127.0.0.1:8079?"+arr[0]+','+arr[1]+','+arr[2]+','+arr[3]+','+arr[4]+','+arr[5]+','+localStorage.getItem('panel'),true);//使用POST方法
+					xhr.open("post","http://127.0.0.1:8079?id="+arr[0]+'&name='+arr[1]+'&Totalnum='+arr[2]+'&Remnum='+arr[3]+'&text='+arr[4]+'&panel='+localStorage.getItem('panel'),true);//使用POST方法
 	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 	        xhr.send();
 	  		})
