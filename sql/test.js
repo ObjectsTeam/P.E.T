@@ -23,7 +23,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select8084----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			for(var i = 0; i < result.length; i++) {
@@ -56,7 +56,7 @@ http.createServer(function(req, res) {
 					if(err) {
 						console.log('[INSERT ERROR] - ', err.message);
 					} else {
-						console.log('--------------------------insert----------------------------');
+						console.log('--------------------------insert8084----------------------------');
 						console.log('insert id: ' + result.insertId);
 						console.log('------------------------------------------------------------\n\n');
 						res.writeHead(200, {
@@ -142,7 +142,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select8090----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -181,7 +181,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select8086----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -224,7 +224,7 @@ http.createServer(function(req, res) {
 				if(err) {
 					console.log('[SELECT ERROR] - ', err.message);
 				} else {
-					console.log('--------------------------select1----------------------------');
+					console.log('--------------------------select8087----------------------------');
 					console.log(result);
 					console.log('------------------------------------------------------------\n\n');
 					res.writeHead(200, {
@@ -239,7 +239,7 @@ http.createServer(function(req, res) {
 						if(err) {
 							console.log('[INSERT ERROR] - ', err.message);
 						} else {
-							console.log('--------------------------insert----------------------------');
+							console.log('--------------------------insert8087----------------------------');
 							console.log(result);
 							console.log('------------------------------------------------------------\n\n');
 						}
@@ -255,7 +255,7 @@ http.createServer(function(req, res) {
 				}
 			});
 		} else {
-			console.log('--------------------------select2----------------------------');
+			console.log('--------------------------select8087----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -310,7 +310,7 @@ http.createServer(function(req, res) {
 		if(error) {
 			console.log('[DELETE ERROR] - ', error.message);
 		} else {
-			console.log('--------------------------delete----------------------------');
+			console.log('--------------------------delete8088----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -348,7 +348,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select8089----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -392,7 +392,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select8091----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -424,7 +424,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select8092----------------------------');
 			console.log(result.length);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -439,7 +439,7 @@ http.createServer(function(req, res) {
 				if(err) {
 					console.log('[INSERT ERROR] - ', err.message);
 				} else {
-					console.log('--------------------------insert----------------------------');
+					console.log('--------------------------insert8092----------------------------');
 					console.log(result);
 					console.log('------------------------------------------------------------\n\n');
 					res.writeHead(200, {
@@ -474,7 +474,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select8093----------------------------');
 			console.log(result.length);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -492,7 +492,7 @@ http.createServer(function(req, res) {
 					if(err) {
 						console.log('[INSERT ERROR] - ', err.message);
 					} else {
-						console.log('--------------------------insert----------------------------');
+						console.log('--------------------------insert8093----------------------------');
 						console.log(result);
 						console.log('------------------------------------------------------------\n\n');
 						res.writeHead(200, {
@@ -512,7 +512,7 @@ http.createServer(function(req, res) {
 							if(err) {
 								console.log('[UPDATE ERROR] - ', err.message);
 							} else {
-								console.log('--------------------------update----------------------------');
+								console.log('--------------------------update8093----------------------------');
 								console.log(result);
 								console.log('------------------------------------------------------------\n\n');
 								res.writeHead(200, {
@@ -555,7 +555,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select8094----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -586,7 +586,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select8094----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -741,7 +741,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select1----------------------------');
+			console.log('--------------------------select8097----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -754,7 +754,7 @@ http.createServer(function(req, res) {
 				if(err) {
 					console.log('[SELECT ERROR] - ', err.message);
 				} else {
-					console.log('--------------------------select2----------------------------');
+					console.log('--------------------------select28097---------------------------');
 					console.log(resul.length);
 					console.log('------------------------------------------------------------\n\n');
 					res.writeHead(200, {
@@ -827,7 +827,7 @@ http.createServer(function(req, res) {
 			console.log('[DELETE ERROR] - ', error.message);
 		} else {
 			console.log(deleteVip)
-			console.log('--------------------------delete----------------------------');
+			console.log('--------------------------delete8098----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -857,7 +857,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select7001----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			if(result !== ""){
