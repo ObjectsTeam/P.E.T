@@ -840,4 +840,46 @@ http.createServer(function(req, res) {
 		}
 	});
 }).listen(8098, "127.0.0.1");
+
+//获取单个商品是否收藏
+http.createServer(function(req, res) {
+	var data = querystring.parse(req.url.slice(2), null, null);
+	//创建sql服务
+	var connection = mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: '123456lmz',
+		port: '3306',
+		database: 'front',
+	});
+	var selectVip = 'SELECT * FROM collectlist where username="' + data.username+'" and name="'+data.name+'"'
+	connection.query(selectVip, function(err, result) {
+		if(err) {
+			console.log('[SELECT ERROR] - ', err.message);
+		} else {
+			console.log('--------------------------select----------------------------');
+			console.log(result);
+			console.log('------------------------------------------------------------\n\n');
+			if(result !== ""){
+				res.writeHead(200, {
+					"Content-Type": "text/plain;charset:utf-8",
+					// res.writeHead(200, {"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+					"Access-Control-Allow-Methods": "GET, POST"
+				});
+				res.end('1');
+			}else{
+				res.writeHead(200, {
+					"Content-Type": "text/plain;charset:utf-8",
+					// res.writeHead(200, {"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+					"Access-Control-Allow-Methods": "GET, POST"
+				});
+				res.end('0');
+			}
+		}
+	});
+
+}).listen(8100, "127.0.0.1");
+
 console.log('start serve!');
