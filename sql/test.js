@@ -617,7 +617,7 @@ http.createServer(function(req, res) {
 	});
 	var insertVip = 'insert into addresslist (id,username,address,phone,name) values(?,?,?,?,?)';
 	var param = [0, data.username, data.address, data.phone, data.name];
-	connection.query(updateVip, param, function(err, result) {
+	connection.query(insertVip, param, function(err, result) {
 		if(err) {
 			console.log('[INSERT ERROR] - ', err.message);
 		} else {
