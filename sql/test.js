@@ -692,7 +692,7 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[SELECT ERROR] - ', err.message);
 		} else {
-			console.log('--------------------------select----------------------------');
+			console.log('--------------------------select1----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
 			res.writeHead(200, {
@@ -701,12 +701,12 @@ http.createServer(function(req, res) {
 				"Access-Control-Allow-Origin": "*",
 				"Access-Control-Allow-Methods": "GET, POST"
 			});
-			connection.query("SELECT * FROM collectlist where username='" + data.username+"'", function(err, res) {
+			connection.query("SELECT * FROM collectlist where username='" + data.username+"'", function(err, resul) {
 				if(err) {
 					console.log('[SELECT ERROR] - ', err.message);
 				} else {
-					console.log('--------------------------select----------------------------');
-					console.log(res.length);
+					console.log('--------------------------select2----------------------------');
+					console.log(resul.length);
 					console.log('------------------------------------------------------------\n\n');
 					res.writeHead(200, {
 						"Content-Type": "text/plain;charset:utf-8",
@@ -715,7 +715,7 @@ http.createServer(function(req, res) {
 						"Access-Control-Allow-Methods": "GET, POST"
 					});
 					var insertVip = 'insert into collectlist (id,username,name,price,img,text,num) values(?,?,?,?,?,?,?)';
-					var param = [res.length, data.username, result.name, result.price, result.img, result.text, result.num];
+					var param = [resul.length, data.username, result.name, result.price, result.img, result.text, result.num];
 					connection.query(insertVip, param, function(err, result) {
 						if(err) {
 							console.log('[INSERT ERROR] - ', err.message);
