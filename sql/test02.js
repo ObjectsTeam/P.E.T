@@ -7,8 +7,9 @@ var result;
 //添加数据
 http.createServer(function(req, res) {
 	var data = querystring.parse(req.url.slice(2), null, null);
+	var arr = Object.keys(data);
 	console.log(data);
-
+	console.log(arr);
 	//创建sql服务
 	var connection = mysql.createConnection({
 		host: 'localhost',
@@ -17,8 +18,8 @@ http.createServer(function(req, res) {
 		port: '3306',
 		database: 'pet',
 	});
-	var addVip = 'insert into ' + data.panel + '(userid,usersex,username,species,years,sex) values(?,?,?,?,?,?)';
-	var param = [data.userid, data.usersex, data.username, data.species, data.years, data.sex];
+	var addVip = 'insert into ' + data.panel + '('+arr[0]+','+arr[1]+','+arr[2]+','+arr[3]+','+arr[4]+') values(?,?,?,?,?)';
+	var param = [data[arr[0]], data[arr[1]], data[arr[2]], data[arr[3]], data[arr[4]]];
 	connection.query(addVip, param, function(err, result) {
 		if(err) {
 			console.log('[INSERT ERROR] - ', err.message);

@@ -7,7 +7,7 @@ var $playListPanel = (function() {
     	+'<table id="table">'
     	+'<tr></tr>'
     	+'</table>');
-    var ThArr = ['编号','活动类型','限定人数','已报名人数','操作'];
+    var ThArr = ['编号','活动类型','限定人数','已报名人数','备注','操作'];
     for(var i=0;i<ThArr.length;i++){
     	$('#table tr').append(''
     	+'<th>'+ThArr[i]+'</th>')
@@ -19,6 +19,7 @@ var $playListPanel = (function() {
     	+'<td>'+m.class+'</td>'
     	+'<td>'+m.Totalnum+'</td>'
     	+'<td>'+m.peoplenum+'</td>'
+    	+'<td>'+m.text+'</td>'
     	+'<td>'
 	  		+'<button>更新</button>'
 	  		+'<button>删除</button>'
@@ -28,6 +29,7 @@ var $playListPanel = (function() {
 	  $('#addBtn').click(function(){
 			$('#table').append(''
 	  		+'<tr>'
+	  		+'<td><input type="text" /></td>'
 	  		+'<td><input type="text" /></td>'
 	  		+'<td><input type="text" /></td>'
 	  		+'<td><input type="text" /></td>'
@@ -53,7 +55,7 @@ var $playListPanel = (function() {
 					        }
 					    }
 					};
-					xhr.open("get","http://127.0.0.1:8079?"+arr[0]+','+arr[1]+','+arr[2]+','+arr[3]+','+arr[4]+','+arr[5]+','+localStorage.getItem('panel'),true);//使用POST方法
+					xhr.open("post","http://127.0.0.1:8079?id="+arr[0]+'&class='+arr[1]+'&Totalnum='+arr[2]+'&peoplenum='+arr[3]+'&text='+arr[4]+'&panel='+localStorage.getItem('panel'),true);//使用POST方法
 	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 	        xhr.send();
 	  		})

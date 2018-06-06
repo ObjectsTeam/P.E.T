@@ -8,7 +8,7 @@ var $peopleListPanel = (function() {
 	    +'<tr>'
 	    +'</tr>'
 	    +'</table>');
-	  var ThArr = ['用户ID','用户性别','昵称','宠物种类','宠物年龄','宠物性别','操作'];
+	  var ThArr = ['用户ID','昵称','宠物种类','宠物年龄','宠物性别','操作'];
 	  for(var i=0;i<ThArr.length;i++){
 	  	$('#table tr').append('<th>'+ThArr[i]+'</th>')
 	  };
@@ -16,7 +16,6 @@ var $peopleListPanel = (function() {
 	  	$('#table').append(''
 	  		+'<tr>'
 	  		+'<td><input type="text" value='+m.userid+'></td>'
-	  		+'<td><input type="text" value='+m.usersex+'></td>'
 	  		+'<td><input type="text" value='+m.username+'></td>'
 	  		+'<td><input type="text" value='+m.species+'></td>'
 	  		+'<td><input type="text" value='+m.years+'></td>'
@@ -31,7 +30,6 @@ var $peopleListPanel = (function() {
 	  $('#addBtn').click(function(){
 			$('#table').append(''
 	  		+'<tr>'
-	  		+'<td><input type="text" /></td>'
 	  		+'<td><input type="text" /></td>'
 	  		+'<td><input type="text" /></td>'
 	  		+'<td><input type="text" /></td>'
@@ -58,7 +56,7 @@ var $peopleListPanel = (function() {
 			        }
 			    }
 			};
-			xhr.open("post","http://127.0.0.1:8079?userid="+arr[0]+'&usersex='+arr[1]+'&username='+arr[2]+'&species='+arr[3]+'&years='+arr[4]+'&sex='+arr[5]+'&panel='+localStorage.getItem('panel'),true);//使用POST方法
+			xhr.open("post","http://127.0.0.1:8079?userid="+arr[0]+'&username='+arr[1]+'&species='+arr[2]+'&years='+arr[3]+'&sex='+arr[4]+'&panel='+localStorage.getItem('panel'),true);//使用POST方法
 	    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
 	    xhr.send();
 		})
