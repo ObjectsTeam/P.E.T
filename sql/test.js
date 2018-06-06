@@ -620,6 +620,8 @@ http.createServer(function(req, res) {
 		if(err) {
 			console.log('[INSERT ERROR] - ', err.message);
 		} else {
+			console.log(data['username'])
+			console.log(data['address'])
 			console.log('--------------------------insert----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
