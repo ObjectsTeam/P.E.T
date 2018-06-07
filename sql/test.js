@@ -702,7 +702,7 @@ http.createServer(function(req, res) {
 		port: '3306',
 		database: 'front',
 	});
-	var deleteVip = 'delete from collectlist where username="'+data.username+'" and id='+data.id;
+	var deleteVip = 'delete from addresslist where username="'+data.username+'" and id='+data.id;
 	connection.query(deleteVip, function(error, result) {
 		if(error) {
 			console.log('[DELETE ERROR] - ', error.message);
