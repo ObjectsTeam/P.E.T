@@ -20,10 +20,11 @@ var $playList3Panel = (function() {
     	+'<td>'+m.Totalnum+'</td>'
     	+'<td>'+m.Remnum+'</td>'
     	+'<td style="text-align:left;">'+m.text+'</td>'
+    	+'<td>'
     	+'<button>更新</button>'
-	  		+'<button>删除</button>'
-	  		+'</td>'
-	  		+'</tr>');
+  		+'<button>删除</button>'
+  		+'</td>'
+  		+'</tr>');
 	  });
 	  $('#addBtn').click(function(){
 			$('#table').append(''
