@@ -34,7 +34,7 @@ http.createServer(function(req, res) {
 			res.end('1');
 		}
 	});
-}).listen(8079, "192.168.155.1");
+}).listen(8079, "127.0.0.1");
 
 //注册账户
 http.createServer(function(req, res) {
@@ -103,7 +103,7 @@ http.createServer(function(req, res) {
 			}
 		}
 	});
-}).listen(8080, "192.168.155.1");
+}).listen(8080, "127.0.0.1");
 
 //删除数据
 http.createServer(function(req, res) {
@@ -142,84 +142,93 @@ http.createServer(function(req, res) {
 	connection.end(function() {
 
 	});
-}).listen(8081, "192.168.155.1");
+}).listen(8081, "127.0.0.1");
 
 //修改密码
 http.createServer(function(req, res) {
-	var data = req.url.slice(2);
-	console.log(data);
-	//创建sql服务
-	var connection = mysql.createConnection({
-		host: 'localhost',
-		user: 'root',
-		password: '123456lmz',
-		port: '3306',
-		database: 'pet',
+	var postData;
+    req.on("data",function (chunk) {
+        postData = JSON.parse(chunk);
+    });
+    req.on("end",function () {
+        res.writeHead(200, {
+            "Content-Type": "text/plain",
+            // res.writeHead(200, {"Content-Type": "application/json",
+            "Access-Control-Allow-Origin":"*",
+            "Access-Control-Allow-Methods": "GET, POST"
+        });
+		//创建sql服务
+		var connection = mysql.createConnection({
+			host: 'localhost',
+			user: 'root',
+			password: '123456lmz',
+			port: '3306',
+			database: 'pet',
+		});
+		connection.connect(function(err) {
+			if(err) {
+				console.log("连接数据库失败");
+			} else {
+				console.log("连接数据库成功");
+			}
+		});
+		var userSql = "update adminlist set password='" + postData.newpwd + "' where username='" + postData.username + "'";
+		connection.query(userSql, function(error, result) {
+			if(error) {
+				console.log(error.message);
+			} else {
+				console.log('--------------------------update----------------------------');
+				console.log(result);
+				console.log('------------------------------------------------------------\n\n');
+				res.end("修改成功");
+			}
+		});	
 	});
-	connection.connect(function(err) {
-		if(err) {
-			console.log("连接数据库失败");
-		} else {
-			console.log("连接数据库成功");
-		}
-	});
-	var userSql = "update adminlist set password=" + JSON.stringify(data.substr(0, data.indexOf("-"))) + " where username=" + JSON.stringify(data.substr(data.indexOf("-") + 1));
-	//	var param = [1000, 2];
-	connection.query(userSql, function(error, result) {
-		if(error) {
-			console.log(error.message);
-		} else {
-			console.log('result: ' + result);
-			res.writeHead(200, {
-				"Content-Type": "text/plain",
-				// res.writeHead(200, {"Content-Type": "application/json",
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Methods": "GET, POST"
-			});
-			res.end("修改成功");
-		}
-	});
-	connection.end(function() {
-
-	});
-}).listen(8082, "192.168.155.1");
+}).listen(8082, "127.0.0.1");
 
 //查询表
 http.createServer(function(req, res) {
-	var data = req.url.slice(2);
-	console.log(data);
-	//创建sql服务
-	var connection = mysql.createConnection({
-		host: 'localhost',
-		user: 'root',
-		password: '123456lmz',
-		port: '3306',
-		database: 'pet',
-	});
-	connection.connect(function(err) {
-		if(err) {
-			console.log("连接数据库失败");
-		} else {
-			console.log("连接数据库成功");
-		}
-	});
-	var selectVip = 'SELECT * FROM ' + data
-	connection.query(selectVip, function(err, result) {
-		if(err) {
-			console.log('[SELECT ERROR] - ', err.message);
-		} else {
-			console.log('--------------------------select----------------------------');
-			console.log(result);
-			console.log('------------------------------------------------------------\n\n');
-			res.writeHead(200, {
-				"Content-Type": "text/plain;charset=utf-8",
-				// res.writeHead(200, {"Content-Type": "application/json",
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Methods": "GET, POST"
-			});
-			res.end(JSON.stringify(result));
-		}
-	});
+	var postData = "";
+    req.on("data",function (chunk) {
+        postData+=chunk;
+        console.log(typeof postData,postData);
+    });
 
-}).listen(8083, "192.168.155.1");
+    req.on("end",function () {
+        res.writeHead(200, {
+            "Content-Type": "text/plain",
+            // res.writeHead(200, {"Content-Type": "application/json",
+            "Access-Control-Allow-Origin":"*",
+            "Access-Control-Allow-Methods": "GET, POST"
+        });
+		//创建sql服务
+		var connection = mysql.createConnection({
+			host: 'localhost',
+			user: 'root',
+			password: '123456lmz',
+			port: '3306',
+			database: 'pet',
+		});
+		connection.connect(function(err) {
+			if(err) {
+				console.log("连接数据库失败");
+			} else {
+				console.log("连接数据库成功");
+			}
+		});
+		var selectVip = 'SELECT * FROM ' + postData
+		connection.query(selectVip, function(err, result) {
+			if(err) {
+				console.log('[SELECT ERROR] - ', err.message);
+			} else {
+				console.log('--------------------------select----------------------------');
+				console.log(result);
+				console.log('------------------------------------------------------------\n\n');
+				res.end(JSON.stringify(result));
+			}
+		});
+    });
+
+}).listen(8083, "127.0.0.1");
+
 console.log('start serve!');

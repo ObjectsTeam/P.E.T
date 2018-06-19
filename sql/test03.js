@@ -71,7 +71,7 @@ http.createServer(function(req, res) {
 			}
 		}
 	});
-}).listen(8084, "127.0.0.1");
+}).listen(8084, "192.168.155.1");
 
 //改密码
 http.createServer(function(req, res) {
@@ -111,7 +111,46 @@ http.createServer(function(req, res) {
 	connection.end(function() {
 
 	});
-}).listen(8085, "127.0.0.1");
+}).listen(8085, "192.168.155.1");
+
+//查询兴趣列表
+http.createServer(function(req, res) {
+	var data = req.url.slice(2);
+	console.log(data);
+	//创建sql服务
+	var connection = mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: '123456lmz',
+		port: '3306',
+		database: 'pet',
+	});
+	connection.connect(function(err) {
+		if(err) {
+			console.log("连接数据库失败");
+		} else {
+			console.log("连接数据库成功");
+		}
+	});
+	var selectVip = 'SELECT * FROM ' + data
+	connection.query(selectVip, function(err, result) {
+		if(err) {
+			console.log('[SELECT ERROR] - ', err.message);
+		} else {
+			console.log('--------------------------select----------------------------');
+			console.log(result);
+			console.log('------------------------------------------------------------\n\n');
+			res.writeHead(200, {
+				"Content-Type": "text/plain;charset=utf-8",
+				// res.writeHead(200, {"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Methods": "GET, POST"
+			});
+			res.end(JSON.stringify(result));
+		}
+	});
+
+}).listen(8083, "192.168.155.1");
 
 //查询商品列表&&登录
 http.createServer(function(req, res) {
@@ -155,7 +194,7 @@ http.createServer(function(req, res) {
 		}
 	});
 
-}).listen(8090, "127.0.0.1");
+}).listen(8090, "192.168.155.1");
 
 //查询商品详细列表
 http.createServer(function(req, res) {
@@ -194,7 +233,7 @@ http.createServer(function(req, res) {
 		}
 	});
 
-}).listen(8086, "127.0.0.1");
+}).listen(9086, "192.168.155.1");
 
 //添加购物车
 http.createServer(function(req, res) {
@@ -284,7 +323,7 @@ http.createServer(function(req, res) {
 			});
 		}
 	});
-}).listen(8087, "127.0.0.1");
+}).listen(7087, "192.168.155.1");
 
 //删除购物车
 http.createServer(function(req, res) {
@@ -322,7 +361,7 @@ http.createServer(function(req, res) {
 			res.end("1");
 		}
 	});
-}).listen(8088, "127.0.0.1");
+}).listen(8088, "192.168.155.1");
 
 //查看购物车
 http.createServer(function(req, res) {
@@ -361,7 +400,7 @@ http.createServer(function(req, res) {
 		}
 	});
 
-}).listen(8089, "127.0.0.1");
+}).listen(8089, "192.168.155.1");
 
 //查询表
 http.createServer(function(req, res) {
@@ -405,7 +444,7 @@ http.createServer(function(req, res) {
 		}
 	});
 
-}).listen(8091, "127.0.0.1");
+}).listen(8091, "192.168.155.1");
 
 //发布信息
 http.createServer(function(req, res) {
@@ -453,7 +492,7 @@ http.createServer(function(req, res) {
 			});
 		}
 	});
-}).listen(8092, "127.0.0.1");
+}).listen(8092, "192.168.155.1");
 
 //更改资料
 http.createServer(function(req, res) {
@@ -529,7 +568,7 @@ http.createServer(function(req, res) {
 			}
 		}
 	});
-}).listen(8093, "127.0.0.1");
+}).listen(8093, "192.168.155.1");
 
 //查看个人信息
 http.createServer(function(req, res) {
@@ -568,7 +607,7 @@ http.createServer(function(req, res) {
 		}
 	});
 
-}).listen(8094, "127.0.0.1");
+}).listen(8094, "192.168.155.1");
 
 //查看表
 http.createServer(function(req, res) {
@@ -599,7 +638,7 @@ http.createServer(function(req, res) {
 		}
 	});
 
-}).listen(7000, "127.0.0.1");
+}).listen(7000, "192.168.155.1");
 //添加收货地址
 http.createServer(function(req, res) {
 	var data = querystring.parse(req.url.slice(2), null, null);
@@ -649,7 +688,7 @@ http.createServer(function(req, res) {
 			});
 		}
 	});
-}).listen(8095, "127.0.0.1");
+}).listen(8095, "192.168.155.1");
 
 //更新收货地址
 http.createServer(function(req, res) {
@@ -686,7 +725,7 @@ http.createServer(function(req, res) {
 			});
 		}
 	}
-}).listen(8096, "127.0.0.1");
+}).listen(8096, "192.168.155.1");
 
 //删除收货地址
 http.createServer(function(req, res) {
@@ -720,7 +759,7 @@ http.createServer(function(req, res) {
 			res.end("1");
 		}
 	});
-}).listen(8099, "127.0.0.1");
+}).listen(8099, "192.168.155.1");
 
 //添加收藏
 http.createServer(function(req, res) {
@@ -800,7 +839,7 @@ http.createServer(function(req, res) {
 			});
 		}
 	});
-}).listen(8097, "127.0.0.1");
+}).listen(8097, "192.168.155.1");
 
 //管理收藏列表
 http.createServer(function(req, res) {
@@ -839,5 +878,5 @@ http.createServer(function(req, res) {
 			res.end("1");
 		}
 	});
-}).listen(8098, "127.0.0.1");
+}).listen(8098, "192.168.155.1");
 console.log('start serve!');
