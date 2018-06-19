@@ -8,8 +8,6 @@ var result;
 http.createServer(function(req, res) {
 	var data = querystring.parse(req.url.slice(2), null, null);
 	var arr = Object.keys(data);
-	console.log(data);
-	console.log(arr);
 	//创建sql服务
 	var connection = mysql.createConnection({
 		host: 'localhost',
@@ -36,7 +34,7 @@ http.createServer(function(req, res) {
 			res.end('1');
 		}
 	});
-}).listen(8079, "127.0.0.1");
+}).listen(8079, "192.168.155.1");
 
 //注册账户
 http.createServer(function(req, res) {
@@ -105,7 +103,7 @@ http.createServer(function(req, res) {
 			}
 		}
 	});
-}).listen(8080, "127.0.0.1");
+}).listen(8080, "192.168.155.1");
 
 //删除数据
 http.createServer(function(req, res) {
@@ -144,7 +142,7 @@ http.createServer(function(req, res) {
 	connection.end(function() {
 
 	});
-}).listen(8081, "127.0.0.1");
+}).listen(8081, "192.168.155.1");
 
 //修改密码
 http.createServer(function(req, res) {
@@ -184,7 +182,7 @@ http.createServer(function(req, res) {
 	connection.end(function() {
 
 	});
-}).listen(8082, "127.0.0.1");
+}).listen(8082, "192.168.155.1");
 
 //查询表
 http.createServer(function(req, res) {
@@ -223,5 +221,5 @@ http.createServer(function(req, res) {
 		}
 	});
 
-}).listen(8083, "127.0.0.1");
+}).listen(8083, "192.168.155.1");
 console.log('start serve!');
