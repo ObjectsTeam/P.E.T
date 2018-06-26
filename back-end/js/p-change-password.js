@@ -38,18 +38,25 @@ var $changePasswordPanel = (function() {
     if(validate()) {
       // 验证通过后，调用 API 接口修改密码
       //创建http服务
+			var obj={
+				'username':localStorage.getItem("username"),
+				'newPwd':$newPwd.val()
+			}
 				var xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function () {
 				    console.log(xhr.readyState,xhr.status);
 				    if (xhr.readyState == 4) {
 				        //表示服务器的相应代码是200；正确返回了数据
 				        if(xhr.status == 200){
+									var message = xhr.responseText;
+									var result = JSON.parse(message);
+									if(result == 1){
 				            alert("success!");
+									}
 				        }
 				    }
 				};
-				var data = $newPwd.val()+"-"+localStorage.getItem("username");
-				xhr.open("get","http://127.0.0.1:8082?"+data,true);//使用POST方法
+				xhr.open("get","http://127.0.0.1:8082?"+obj.username+'-'+obj.newPwd,true);//使用POST方法
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST需增加
         xhr.send();
     }

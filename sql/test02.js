@@ -151,8 +151,8 @@ http.createServer(function (req, res) {
 
 //修改密码
 http.createServer(function (req, res) {
-    var data = querystring.parse(req.url.slice(2), null, null);
-    var arr = Object.keys(data);
+    var data = req.url.slice(2).split('-');
+	console.log(data)
 	res.writeHead(200, {
 		"Content-Type": "text/plain",
 		// res.writeHead(200, {"Content-Type": "application/json",
@@ -174,15 +174,16 @@ http.createServer(function (req, res) {
 			console.log("连接数据库成功");
 		}
 	});
-	var userSql = "update adminlist set password='" + data.newPwd + "' where username='" + data.username + "'";
+	var userSql = "update adminlist set password=" + data[0] + " where username='" + data[1]+"'";
 	connection.query(userSql, function (error, result) {
+	console.log(userSql)
 		if (error) {
 			console.log(error.message);
 		} else {
 			console.log('--------------------------update----------------------------');
 			console.log(result);
 			console.log('------------------------------------------------------------\n\n');
-			res.end("修改成功");
+			res.end("1");
 		}
 	});
 }).listen(8082, "127.0.0.1");
@@ -190,7 +191,7 @@ http.createServer(function (req, res) {
 //查询表
 http.createServer(function (req, res) {
     var data = req.url.slice(2);
-
+	console.log(data)
     res.writeHead(200, {
         "Content-Type": "text/plain",
         // res.writeHead(200, {"Content-Type": "application/json",
