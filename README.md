@@ -16,7 +16,7 @@
     
 * 张兵（客户端代码开发）
     * 学号：2015015214 
-    * Email：<101378407@qq.com>
+    * Email：<1013784073@qq.com>
     * Github：[https://github.com/zhangbing1612](https://github.com/zhangbing1612)
     
 * 王洪章（客户端代码开发）
