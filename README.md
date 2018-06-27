@@ -1,7 +1,6 @@
 # PET_repository
 
-### 仓库地址
-    [https://github.com/ObjectsTeam/PET](https://github.com/ObjectsTeam/PET)
+### 仓库地址：[https://github.com/ObjectsTeam/PET](https://github.com/ObjectsTeam/PET)
 
 ### 项目简介
 
