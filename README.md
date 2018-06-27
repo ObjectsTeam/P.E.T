@@ -1,4 +1,4 @@
-# PET_repository
+﻿# PET_repository
 
 ### 仓库地址：[https://github.com/ObjectsTeam/PET](https://github.com/ObjectsTeam/PET)
 
@@ -39,4 +39,11 @@
     * Email：<2944982361@qq.com>
     * Github：[https://github.com/wangwei12](https://github.com/wangwei12)
 ### 项目截图
-  
+  <img src="docs/imgs/01.png" width=250 height=400 />
+  <img src="docs/imgs/02.png" width=250 height=400 />
+  <img src="docs/imgs/03.png" width=250 height=400 />
+  <img src="docs/imgs/04.png" width=250 height=400 />
+  <img src="docs/imgs/05.png" width=250 height=400 />
+  <img src="docs/imgs/06.png" width=250 height=400 />
+  <img src="docs/imgs/07.png" width=250 height=400 />
+  <img src="docs/imgs/08.png" width=250 height=400 />
