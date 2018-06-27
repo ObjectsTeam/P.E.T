@@ -26,7 +26,7 @@
         
 * 王一丁（客户端代码开发，测试）
     * 学号：2015015498      
-    * Email：<1833216353@qq.com>
+    * Email：<18332162353@163.com>
     * Github：[https://github.com/wangyiding97](https://github.com/wangyiding97)
             
 * 霍彦儒（客户端代码开发，测试）
