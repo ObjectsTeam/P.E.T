@@ -13,12 +13,7 @@
     * 学号：2015015215
     * Email：<1239271010@qq.com>
     * Github：[https://github.com/zhangyicheng95](https://github.com/zhangyicheng95)
-    
-* 张兵（客户端代码开发）
-    * 学号：2015015208 
-    * Email：<3514843847@qq.com>
-    * Github：[https://github.com/zhangbing1612](https://github.com/zhangbing1612)
-    
+     
 * 王洪章（客户端代码开发）
     * 学号：2015015243   
     * Email：<1055394048@qq.com>
